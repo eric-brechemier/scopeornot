@@ -110,6 +110,11 @@ APPLICATION PROGRAMMING INTERFACE (API)
   window object in browser environment, a shared singleton object, or a context
   object created specifically for this code based on its name and needs.
 
+INCLUDED IMPLEMENTATIONS
+
+  scope-api.js - null implementation (does nothing) with inline documentation
+  scope-bootstrap.js - static synchronous definition in single shared context
+
 REFERENCES
 
   [1] JavaScript Module Pattern: In-Depth
