@@ -39,7 +39,7 @@ APPLICATION PROGRAMMING INTERFACE (API)
 
 EXAMPLES
 
-  Run code:
+  * Run code:
   scope(function(context){
     function timestamp(){
       return Number(new Date());
@@ -50,7 +50,7 @@ EXAMPLES
     }
   });
 
-  Request what you need:
+  * Request what you need:
   scope(function(context){
     function timestamp(){
       return Number(new Date());
@@ -59,7 +59,7 @@ EXAMPLES
     context.log( "Now: "+timestamp() );
   },["log"]);
 
-  Return what you wish to share and give it a name:
+  * Return what you wish to share and give it a name:
   scope(function(){
     function timestamp(){
       return Number(new Date());
@@ -67,7 +67,7 @@ EXAMPLES
     return timestamp;
   },[],"timestamp");
 
-  Define a module with dependencies:
+  * Define a module with dependencies:
   scope(function(context){
     var
       // Private alias
