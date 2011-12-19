@@ -114,6 +114,7 @@ INCLUDED IMPLEMENTATIONS
 
   scope-api.js - null implementation (does nothing) with inline documentation
   scope-bootstrap.js - static synchronous definition in single shared context
+  scope-amd.js - Asynchronous Module Definition [3]
 
 REFERENCES
 
@@ -139,5 +140,6 @@ LICENSE
 
 HISTORY
 
-  2011-10-30, v0.0.1, Project creation
+  2011-10-30, v0.0.1, Project creation: scope-api, scope-bootstrap
+  2011-12-19, v0.0.2, Asynchronous Module Definition: scope-amd
 
