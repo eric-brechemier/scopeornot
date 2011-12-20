@@ -66,8 +66,8 @@ var scope = (function(){
 
       // Copy the returned value to shared context
       // and return it for the AMD loader
-      if (typeof id==="string"){
-        context[id] = result;
+      if (typeof name==="string"){
+        context[name] = result;
         return result;
       }
     }
