@@ -73,6 +73,12 @@ var scope = (function(){
     }
 
     if (arguments.length===2){
+      // no id, no need to go through the loaded when there is nothing to load
+      if (dependencies.length===0){
+        factory();
+        return;
+      }
+
       // no id, generate a unique throw-away id
       counter++;
       define('scope/anonymous'+counter,dependencies,factory);
