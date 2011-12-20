@@ -82,7 +82,11 @@ var scope = (function(){
       // no id, generate a unique throw-away id
       counter++;
       define('scope/anonymous'+counter,dependencies,factory);
-    } else if (arguments.length===3){
+      return;
+    }
+
+    // typical case, all arguments included
+    if (arguments.length===3){
       define(id,dependencies,factory);
     }
   }
