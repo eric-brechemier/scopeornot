@@ -22,6 +22,7 @@
 */
 /*global scope:true, define */
 var scope = (function(){
+
   // single shared context
   var context = {};
 
@@ -46,8 +47,10 @@ var scope = (function(){
     }
 
     if (arguments.length===2){
-      // no id, fallback to top-level require()
-      require(needs,factory);
+      // no id, fallback to local require()
+      define(function(require){
+        require(needs,factory);
+      });
     } else if (arguments.length===3){
       // define() is only used when id is included
       define(name,needs,factory);
