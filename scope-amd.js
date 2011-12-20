@@ -20,7 +20,7 @@
     called immediately and thus runs synchronously instead of asynchronously
   * the context is a shared singleton object in this implementation
 */
-/*global scope, define */
+/*global scope:true, define */
 var scope = (function(){
   // single shared context
   var context = {};
