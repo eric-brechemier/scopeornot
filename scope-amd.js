@@ -27,6 +27,12 @@ var scope = (function(){
   var context = {};
 
   function scope(code,needs,name){
+    var
+      id = name,
+      dependencies = [],
+      i,
+      length,
+      moduleId;
 
     if (arguments.length===1){
       // no dependency, no id - just run code synchronously now
@@ -34,26 +40,41 @@ var scope = (function(){
       return;
     }
 
+    // Fill in dependencies with the list of module ids not found in context
+    for (i=0, length=needs.length; i<length; i++){
+      moduleId = needs[i];
+      if ( !context.hasOwnProperty(moduleId) ){
+        dependencies.push(moduleId);
+      }
+    }
+
     function factory(){
-      var i, result;
-      for (i=0; i<needs.length; i++){
-        context[ needs[i] ] = arguments[i];
+      var result;
+
+      // Copy dependencies provided as arguments to the context
+      for (i=0, length=dependencies.length; i<length; i++){
+        moduleId = dependencies[i];
+        context[moduleId] = arguments[i];
       }
+
+      // Call the code with shared context
       result = code(context);
-      if (typeof name==="string"){
-        context[name] = result;
+
+      // Copy the returned value to shared context
+      // and return it for the AMD loader
+      if (typeof id==="string"){
+        context[id] = result;
+        return result;
       }
-      return result;
     }
 
     if (arguments.length===2){
       // no id, fallback to local require()
       define(function(require){
-        require(needs,factory);
+        require(dependencies,factory);
       });
     } else if (arguments.length===3){
-      // define() is only used when id is included
-      define(name,needs,factory);
+      define(id,dependencies,factory);
     }
   }
 
