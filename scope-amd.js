@@ -75,7 +75,7 @@ var scope = (function(){
     if (arguments.length===2){
       // no id, generate a unique throw-away id
       counter++;
-      define('anonymous'+counter,dependencies,factory);
+      define('scope/anonymous'+counter,dependencies,factory);
     } else if (arguments.length===3){
       define(id,dependencies,factory);
     }
