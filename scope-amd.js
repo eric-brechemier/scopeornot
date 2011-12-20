@@ -46,8 +46,10 @@ var scope = (function(){
     }
 
     if (arguments.length===2){
-      define(needs,factory);
+      // no id, fallback to top-level require()
+      require(needs,factory);
     } else if (arguments.length===3){
+      // define() is only used when id is included
       define(name,needs,factory);
     }
   }
