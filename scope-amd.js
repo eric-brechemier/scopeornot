@@ -42,6 +42,7 @@ var scope = (function(){
       if (typeof name==="string"){
         context[name] = result;
       }
+      return result;
     }
 
     if (arguments.length===2){
