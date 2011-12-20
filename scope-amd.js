@@ -23,8 +23,12 @@
 /*global scope:true, define */
 var scope = (function(){
 
-  // single shared context
-  var context = {};
+  var
+    // single shared context
+    context = {},
+
+    // counter for throw-away ids
+    counter = 0;
 
   function scope(code,needs,name){
     var
@@ -69,10 +73,9 @@ var scope = (function(){
     }
 
     if (arguments.length===2){
-      // no id, fallback to local require()
-      define(function(require){
-        require(dependencies,factory);
-      });
+      // no id, generate a unique throw-away id
+      counter++;
+      define('anonymous'+counter,dependencies,factory);
     } else if (arguments.length===3){
       define(id,dependencies,factory);
     }
