@@ -37,5 +37,5 @@ COPYRIGHT
 
 HISTORY
 
-  2011-12-20, First version presented at ParisJS on December 21st, 2011
+  2011-12-21, First version presented at ParisJS on December 21st, 2011
 
