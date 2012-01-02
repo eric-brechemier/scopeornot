@@ -38,7 +38,8 @@ var scope = (function(){
       dependencies = [],
       i,
       length,
-      moduleId;
+      moduleId,
+      result;
 
     if (arguments.length===1){
       // no dependency, no id - just run code synchronously now
@@ -55,8 +56,6 @@ var scope = (function(){
     }
 
     function factory(){
-      var result;
-
       // Copy dependencies provided as arguments to the context
       for (i=0, length=dependencies.length; i<length; i++){
         moduleId = dependencies[i];
@@ -76,7 +75,14 @@ var scope = (function(){
 
     // no dependency, run factory() and define the result instead
     if (dependencies.length===0){
-      factory = factory();
+      result = factory();
+      // replace the factory
+      // The result could be provided directly as "factory" in most cases,
+      // when the result is an object, but a result function gets called is
+      // mistaken for a factory and gets called instead of defined.
+      factory = function(){
+        return result;
+      };
     }
 
     if (arguments.length===2){
