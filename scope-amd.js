@@ -18,6 +18,8 @@
   Notes:
   * when only a code function is provided (no dependencies), the function is
     called immediately and thus runs synchronously instead of asynchronously
+  * likewise, when all dependencies are available, the code function runs
+    synchronously, and the result is associated with given name if any
   * the context is a shared singleton object in this implementation
 */
 /*global scope:true, define */
@@ -72,13 +74,12 @@ var scope = (function(){
       }
     }
 
-    if (arguments.length===2){
-      // no id, no need to go through the loaded when there is nothing to load
-      if (dependencies.length===0){
-        factory();
-        return;
-      }
+    // no dependency, run factory() and define the result instead
+    if (dependencies.length===0){
+      factory = factory();
+    }
 
+    if (arguments.length===2){
       // no id, generate a unique throw-away id
       counter++;
       define('scope/anonymous'+counter,dependencies,factory);
