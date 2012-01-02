@@ -80,7 +80,9 @@ var scope = (function(){
     }
 
     if (arguments.length===2){
-      // no id, generate a unique throw-away id
+      // When id is omitted, generate a unique throw-away id.
+      // This is needed to avoid mismatched anonymous define() error:
+      // http://requirejs.org/docs/errors.html#mismatch
       counter++;
       define('scope/anonymous'+counter,dependencies,factory);
       return;
