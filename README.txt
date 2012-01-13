@@ -13,11 +13,11 @@ DESCRIPTION
   Module Definition.
 
   This project defines a single function scope() with multiple implementations.
-  The goal is to make definition of modules and private scopes slightly simpler
-  than using JavaScript Module pattern, and flexible enough to switch from
-  static to dynamic module loading. You can choose one of the provided scope()
-  implementations, replace it with another, tweak it to your needs, or create
-  your own.
+  The goal is to make the definition of modules and private scopes slightly
+  simpler than using JavaScript Module pattern, and flexible enough to switch
+  from static to dynamic module loading. You can choose one of the provided
+  scope() implementations, replace it with another, tweak it to your needs,
+  or create your own.
 
 EXAMPLES
 
