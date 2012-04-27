@@ -27,7 +27,7 @@ var scope = (function(){
   function scope(code,needs,name){
     // call code synchronously, without taking needs into account
     var result = code(context);
-    if (typeof name==="string"){
+    if (typeof name === "string"){
       context[name] = result;
     }
   }
