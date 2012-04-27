@@ -110,10 +110,11 @@ APPLICATION PROGRAMMING INTERFACE (API)
   window object in browser environment, a shared singleton object, or a context
   object created specifically for this code based on its name and needs.
 
-  Implementations of scope() may be stacked, started with scope-bootstrap.js:
-  each implementation should expect that a new "scope" may be defined in its
-  context; it may then call the new scope() before, after, or instead of its
-  own implementation depending on what's most relevant.
+  Implementations of scope() may be stacked, starting with scope-bootstrap.js:
+  each implementation shall define itself as "scope" in the context and expect
+  that a new implementation can be defined in a call to scope() using the name
+  "scope" as well. It is up to the new implementation to call the old one,
+  before or after its own code or not at all, to fit its purpose.
 
 INCLUDED IMPLEMENTATIONS
 
