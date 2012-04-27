@@ -4,8 +4,9 @@
 
 /*
   Function: scope(code,needs,name)
-  Run code immediately, without taking needs into account, and set the return
-  value, if any, to a property with given name in the global context.
+  Run code immediately in global context, without taking needs into account,
+  and set the return value, if any, to a property with given name in the
+  global context.
 
   Parameters:
     code  - function(context), the code to run with the global context provided
