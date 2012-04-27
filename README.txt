@@ -105,15 +105,20 @@ APPLICATION PROGRAMMING INTERFACE (API)
     name  - string, optional, name of the context property to set the value
             that the code may return
 
-  Note:
+  Notes:
   The context may be, depending on the implementation, the global object or the
   window object in browser environment, a shared singleton object, or a context
   object created specifically for this code based on its name and needs.
 
+  Implementations of scope() may be stacked, started with scope-bootstrap.js:
+  each implementation should expect that a new "scope" may be defined in its
+  context; it may then call the new scope() before, after, or instead of its
+  own implementation depending on what's most relevant.
+
 INCLUDED IMPLEMENTATIONS
 
   scope-api.js - null implementation (does nothing) with inline documentation
-  scope-bootstrap.js - static synchronous definition in single shared context
+  scope-bootstrap.js - static synchronous definition in global context
   scope-amd.js - Asynchronous Module Definition [3]
   scope-record.js - record the order of calls to code() using an implementation
                     loaded previously, e.g. to combine scripts for optimization
