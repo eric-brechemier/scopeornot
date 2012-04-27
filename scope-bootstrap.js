@@ -21,10 +21,22 @@
   object instead.
 */
 var scope = (function(){
-  // global context
-  var context = this;
+  var
+    // global context
+    context = this,
+    // different scope() implementation?
+    contextScope = context.scope;
 
   function scope(code,needs,name){
+    if (
+      typeof contextScope !== scope &&
+      typeof contextScope === "function"
+    ){
+      // use the scope() implementation from the context instead
+      contextScope(code,needs,name);
+      return;
+    }
+
     // call code synchronously, without taking needs into account
     var result = code(context);
     if (typeof name === "string"){
