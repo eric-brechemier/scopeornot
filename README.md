@@ -1,34 +1,33 @@
-scope-in-browser
-================
+#scope-in-browser
 
 Example use in browser of the scope() function from scopeornot project
 
-#LANGUAGE
+##LANGUAGE
 
   JavaScript
 
-#DESCRIPTION
+##DESCRIPTION
 
   Using the scope() function defined in scopeornot [1], this example runs
   code and defines modules in a browser environment.
 
   The example is completed with unit tests running in QUnit.
 
-#REFERENCE
+##REFERENCE
 
   [1] scopeornot
   https://github.com/eric-brechemier/scopeornot
 
-#AUTHOR
+##AUTHOR
 
   Eric Bréchemier <scopeornot@eric.brechemier.name>
 
-#LICENSE
+##LICENSE
 
   MIT
   http://www.opensource.org/licenses/MIT
 
-#HISTORY
+##HISTORY
 
   YYYY-MM-DD, v0.0.+, No History Yet
 
