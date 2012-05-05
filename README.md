@@ -15,7 +15,7 @@ Example use in browser of the scope() function from scopeornot project
 
 ##REFERENCE
 
-  [1] scopeornot
+  [1] scopeornot  
   https://github.com/eric-brechemier/scopeornot
 
 ##AUTHOR
@@ -24,7 +24,7 @@ Example use in browser of the scope() function from scopeornot project
 
 ##LICENSE
 
-  MIT
+  MIT  
   http://www.opensource.org/licenses/MIT
 
 ##HISTORY
