@@ -20,7 +20,8 @@ Example use in browser of the scope() function from scopeornot project
 
 ##AUTHOR
 
-  Eric Bréchemier <scopeornot@eric.brechemier.name>
+  Eric Bréchemier  
+  <scopeornot@eric.brechemier.name>
 
 ##LICENSE
 
