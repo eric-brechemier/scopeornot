@@ -167,5 +167,5 @@ HISTORY
   2011-12-19, v0.0.2, Asynchronous Module Definition: scope-amd
   2012-01-07, v0.0.3, Record order of code() calls: scope-record
   2012-04-27, v0.0.4, Updated scope-bootstrap: global context, can be stacked
-  XXXX-XX-XX, v0.0.5, Synchronous definition in private scope: scope-private
+  2012-05-08, v0.0.5, Synchronous definition in private scope: scope-private
 
