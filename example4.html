@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example 4 &mdash; Define modules in a shared private scope</title>
+  </head>
+  <h1>Example 4 &mdash; Define modules in a shared private scope</h1>
+  <div id="log"></div>
+  <p>
+  In <a href="example4.html">Example 4</a>, all modules were defined in the
+  global scope.
+  </p>
+  <p>
+  By adding <a href="view-source:example4.html"
+  >scope-private on top of scope-bootstrap</a>, the same modules are now
+  defined in a shared private scope.
+  </p>
+  <script src="scopeornot/scope-bootstrap.js"></script>
+  <script src="scopeornot/scope-private.js"></script>
+  <script src="scripts/log.js"></script>
+  <script src="scripts/timestamp.js"></script>
+  <script src="scripts/timeModule.js"></script>
+  <script>
+  scope(function(context){
+    context.timeModule.start();
+  },["timeModule"]);
+
+  scope(function(context){
+    context.timeModule.stop();
+    context.log(
+      "Duration: " + context.timeModule.getDuration() + "ms"
+    );
+  },["log","timeModule"]);
+  </script>
+</html>
