@@ -125,6 +125,11 @@ INCLUDED IMPLEMENTATIONS
   scope-record.js - record the order of calls to code() using an implementation
                     loaded previously, e.g. to combine scripts for optimization
 
+PRIOR ART
+
+  scopeornot was inspired by the scope() function in my-common project [4],
+  presented by Jie Meng-Gérard at ParisJS in March 2011 [5].
+
 REFERENCES
 
   [1] JavaScript Module Pattern: In-Depth
@@ -137,6 +142,9 @@ REFERENCES
   [3] Asynchronous Module Definition
   https://github.com/amdjs/amdjs-api/wiki/AMD
   http://wiki.commonjs.org/wiki/Modules/AsynchronousDefinition
+
+  [4] my-common by Jie Meng-Gérard
+  https://github.com/jiem/my-common
 
 AUTHOR
 
