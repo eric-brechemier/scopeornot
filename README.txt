@@ -33,12 +33,18 @@ EXAMPLES
 
   * Request what you need:
   scope(function(context){
+    var
+      // declare aliases
+      Number = context.Number,
+      Date = context.Date,
+      log = context.log;
+
     function timestamp(){
       return Number(new Date());
     }
 
-    context.log( "Now: "+timestamp() );
-  },["log"]);
+    log( "Now: "+timestamp() );
+  },["log","Number","Date"]);
 
   * Return what you wish to share and give it a name:
   scope(function(){
