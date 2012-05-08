@@ -52,8 +52,9 @@ EXAMPLES
   * Define a module with dependencies:
   scope(function(context){
     var
-      // Private alias
+      // Private aliases
       timestamp = context.timestamp,
+      log = context.log,
 
       // Private fields
       startTime = null,
