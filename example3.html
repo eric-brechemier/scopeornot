@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example 3 &mdash; Define a module with dependencies</title>
+  </head>
+  <h1>Example 3 &mdash; Define a module with dependencies</h1>
+  <div id="log"></div>
+  <p>
+  In <a href="example1.html">Example 1</a> and
+  <a href="example2.html">Example 2</a>, the utility module "log" was defined
+  to output text to an element in the DOM with the id "log".
+  </p>
+  <p>
+  This example defines two more modules, "timestamp" and "timeModule".
+  As seen in the <a href="view-source:example3.html">page source</a>,
+  using scope-bootstrap alone, the modules can be accessed directly
+  in the global context as well as indirectly using scope().
+  </p>
+  <script src="scopeornot/scope-bootstrap.js"></script>
+  <script src="scripts/log.js"></script>
+  <script src="scripts/timestamp.js"></script>
+  <script src="scripts/timeModule.js"></script>
+  <script>
+  timeModule.start();
+  scope(function(context){
+    context.timeModule.stop();
+    context.log(
+      "Duration: " + context.timeModule.getDuration() + "ms"
+    );
+  },["log","timeModule"]);
+  </script>
+</html>
