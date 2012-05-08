@@ -16,8 +16,7 @@ DESCRIPTION
   The goal is to make the definition of modules and private scopes slightly
   simpler than using JavaScript Module pattern, and flexible enough to switch
   from static to dynamic module loading. You can choose one of the provided
-  scope() implementations, replace it with another, tweak it to your needs,
-  or create your own.
+  scope() implementations, stack it with others, or replace it with your own.
 
 EXAMPLES
 
