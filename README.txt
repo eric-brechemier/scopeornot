@@ -120,6 +120,7 @@ INCLUDED IMPLEMENTATIONS
 
   scope-api.js - null implementation (does nothing) with inline documentation
   scope-bootstrap.js - static synchronous definition in global context
+  scope-private.js - static synchronous definition in private context
   scope-amd.js - Asynchronous Module Definition [3]
   scope-record.js - record the order of calls to code() using an implementation
                     loaded previously, e.g. to combine scripts for optimization
@@ -152,4 +153,5 @@ HISTORY
   2011-12-19, v0.0.2, Asynchronous Module Definition: scope-amd
   2012-01-07, v0.0.3, Record order of code() calls: scope-record
   2012-04-27, v0.0.4, Updated scope-bootstrap: global context, can be stacked
+  XXXX-XX-XX, v0.0.5, Synchronous definition in private scope: scope-private
 
