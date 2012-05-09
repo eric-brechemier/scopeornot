@@ -33,8 +33,7 @@ scope(function(parentContext){
       need = needs[i];
       if (
         // not found in private context and found in parent context
-        !privateContext.hasOwnProperty(need) &&
-        parentContext.hasOwnProperty(need)
+        !privateContext.hasOwnProperty(need) && need in parentContext
       ){
         // copy from parent context to private context
         privateContext[need] = parentContext[need];
