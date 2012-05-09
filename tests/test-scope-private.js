@@ -64,7 +64,9 @@
       hasRun = false,
       privateContext,
       codeName1 = "module1",
-      codeResult1 = {result:"value1"};
+      codeResult1 = {result:"value1"},
+      originalScope,
+      scopeReplacement = function(){/* replacement for scope() */};
 
     scope(function(context){
       hasRun = true;
@@ -96,6 +98,23 @@
       strictEqual(context,privateContext,"private context must be shared");
     },[],"module2");
 
+    originalScope = global.scope;
+    scope(function(context){
+      return scopeReplacement;
+    },[],"scope");
+    strictEqual(
+      privateContext.scope,
+      scopeReplacement,
+      "scope() is expected to be replaced in private context"
+    );
+    strictEqual(
+      global.scope,
+      scopeReplacement,
+      "scope() is expected to be replaced in global context"
+    );
+    // restore origin scope() to allow further tests
+    privateContext.scope = originalScope;
+    global.scope = originalScope;
   });
 
 }());
