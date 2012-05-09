@@ -14,18 +14,49 @@
     ok(hasRun,"code must run synchronously");
   });
 
-  test("scope(code,needs) must run code ignoring needs",function(){
+  test("scope(code,needs) must import needs from global context",function(){
     var
       hasRun = false;
 
     scope(function(context){
       hasRun = true;
       notStrictEqual(context, global, "code must not run in global context");
-    },["a","ab","abc"]);
-    ok(
-      hasRun,
-      "code must run synchronously, ignoring needs"
+      strictEqual(
+        context.undefined,
+        global.undefined,
+        "undefined must be imported from global context"
+      );
+      strictEqual(
+        context.document,
+        global.document,
+        "document must be imported from global context"
+      );
+      strictEqual(
+        context.window,
+        global.window,
+        "window must be imported from global context"
+      );
+      strictEqual(
+        context.Date,
+        global.Date,
+        "Date must be imported from global context"
+      );
+      strictEqual(
+        context.Number,
+        global.Number,
+        "Number must be imported from global context"
+      );
+      strictEqual(
+        context.setTimeout,
+        global.setTimeout,
+        "setTimeout must be imported from global context"
+      );
+    },[
+      "a","ab","abc", // missing
+      "undefined","document","window","Date","Number","setTimeout" // expected
+      ]
     );
+    ok(hasRun,"code must run synchronously, in spite of missing needs");
   });
 
   test("scope(code,needs,name) must set result in private context",function(){
