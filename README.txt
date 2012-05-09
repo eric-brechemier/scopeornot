@@ -171,5 +171,5 @@ HISTORY
   2012-04-27, v0.0.4, Updated scope-bootstrap: global context, can be stacked
   2012-05-08, v0.0.5, Synchronous definition in private scope: scope-private
   2012-05-09, v0.0.6, Asynchronous definition: scope-ready
-  XXXX-XX-XX, v0.0.7, Log when scope() is called and when code runs: scope-log
+  2012-05-09, v0.0.7, Log when scope() is called and when code runs: scope-log
 
