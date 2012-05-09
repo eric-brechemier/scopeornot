@@ -25,14 +25,19 @@ scope(function(parentContext){
     Check whether all needs are found in context
 
     Parameters:
-      needs - array of strings, names of properties expected in context
+      needs - optional, array of strings, names of properties expected
+              to be found in context
       context - object, set of properties available in context
 
     Returns:
-      boolean, true when all names in needs are found in context,
-      false otherwise
+      boolean, false when one name in needs is not found in context,
+      true otherwise
   */
   function isReady(needs,context){
+    if (needs === null || typeof needs === "undefined"){
+      return true;
+    }
+
     var
       i,
       name;
@@ -58,6 +63,10 @@ scope(function(parentContext){
       currentQueue = [].concat(queue),
       i;
 
+    // empty the queue
+    queue = [];
+
+    // retry all
     for (i=0; i<currentQueue.length; i++){
       currentQueue[i]();
     }
