@@ -33,5 +33,5 @@ Example use in browser of the scope() function from scopeornot project
 
 ##HISTORY
 
-  YYYY-MM-DD, v0.0.+, No History Yet
+  2012-05-09, v0.1.0, Five examples of use in the browser  
 
