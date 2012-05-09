@@ -14,11 +14,16 @@
   >scope-ready on top of scope-private and scope-bootstrap</a>,
   the same modules may now be defined out of order.
   </p>
+  <p>
+  Usinc scope-log, the order of calls to scope() and calls to the code
+  is logged to the console, if available.
+  </p>
 
   <!-- the scope() implementations must be defined in order -->
   <script src="scopeornot/scope-bootstrap.js"></script>
   <script src="scopeornot/scope-private.js"></script>
   <script src="scopeornot/scope-ready.js"></script>
+  <script src="scopeornot/scope-log.js"></script>
 
   <!-- the modules may be defined in any order -->
   <script>
