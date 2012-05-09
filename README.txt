@@ -169,5 +169,5 @@ HISTORY
   2012-01-07, v0.0.3, Record order of code() calls: scope-record
   2012-04-27, v0.0.4, Updated scope-bootstrap: global context, can be stacked
   2012-05-08, v0.0.5, Synchronous definition in private scope: scope-private
-  XXXX-XX-XX, v0.0.6, Asynchronous definition: scope-ready
+  2012-05-09, v0.0.6, Asynchronous definition: scope-ready
 
