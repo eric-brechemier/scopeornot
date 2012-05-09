@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example 5 &mdash; Define modules out of order, run when ready</title>
+  </head>
+  <h1>Example 5 &mdash; Define modules out of order, run when ready</h1>
+  <div id="log"></div>
+  <p>
+  In <a href="example4.html">Example 4</a>, all modules were defined in the
+  order in which they were expected to run.
+  </p>
+  <p>
+  By adding <a href="view-source:example5.html"
+  >scope-ready on top of scope-private and scope-bootstrap</a>,
+  the same modules may now be defined out of order.
+  </p>
+
+  <!-- the scope() implementations must be defined in order -->
+  <script src="scopeornot/scope-bootstrap.js"></script>
+  <script src="scopeornot/scope-private.js"></script>
+  <script src="scopeornot/scope-ready.js"></script>
+
+  <!-- the modules may be defined in any order -->
+  <script>
+  scope(function(context){
+    context.timeModule.start();
+  },["timeModule"]);
+
+  scope(function(context){
+    context.timeModule.stop();
+    context.log(
+      "Duration: " + context.timeModule.getDuration() + "ms"
+    );
+  },["log","timeModule"]);
+  </script>
+  <script src="scripts/timeModule.js"></script>
+  <script src="scripts/log.js"></script>
+  <script src="scripts/timestamp.js"></script>
+</html>
