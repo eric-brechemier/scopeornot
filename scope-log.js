@@ -54,4 +54,4 @@ scope(function(parentContext){
 
   return scope;
 
-},["console","Date","Number"],"scope");
+},["scope","console","Date","Number"],"scope");
