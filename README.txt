@@ -173,4 +173,5 @@ HISTORY
   2012-05-09, v0.0.7, Log when scope() is called and when code runs: scope-log
   2012-05-09, v0.0.8, scope-record is deprecated
   2012-05-09, v0.0.9, Enhance scope-private: import inherited properties too
+  2012-05-10, v0.1.0, Bug fix in scope-log: add missing dependency "scope"
 
