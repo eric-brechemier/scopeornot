@@ -34,4 +34,5 @@ Example use in browser of the scope() function from scopeornot project
 ##HISTORY
 
   2012-05-09, v0.1.0, Five examples of use in the browser  
+  2012-05-10, v0.1.1, Tests of four implementations of scope() in the browser  
 
