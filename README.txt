@@ -9,8 +9,8 @@ DESCRIPTION
 
   Wrap your modules in scope() calls, and switch the implementation of scope to
   run the code synchronously or asynchronously, optionally defining a module in
-  global scope or in a shared context, using CommonJS Modules or Asynchronous
-  Module Definition.
+  global scope or in a shared context, using CommonJS Modules [2] or
+  Asynchronous Module Definition [3].
 
   This project defines a single function scope() with multiple implementations.
   The goal is to make the definition of modules and private scopes slightly
@@ -130,6 +130,7 @@ INCLUDED IMPLEMENTATIONS
   scope-ready.js - static asynchronous definition in parent context
   scope-log.js - log when scope() is called and when code actually runs
   scope-amd.js - Asynchronous Module Definition [3]
+  scope-cjs.js - CommonJS Modules [2]
   scope-record.js - deprecated
 
 PRIOR ART
@@ -174,4 +175,5 @@ HISTORY
   2012-05-09, v0.0.8, scope-record is deprecated
   2012-05-09, v0.0.9, Enhance scope-private: import inherited properties too
   2012-05-10, v0.1.0, Bug fix in scope-log: add missing dependency "scope"
+  2012-05-11, v0.2.0, CommonJS Modules: scope-cjs
 
