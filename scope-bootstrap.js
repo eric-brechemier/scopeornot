@@ -2,10 +2,10 @@
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-var scope = (function(){
+(function(){
   var
     // global context
-    context = this;
+    globalContext = this.global || this;
 
   /*
     Function: scope(code,needs,name)
@@ -23,17 +23,19 @@ var scope = (function(){
               value that the code may return
 
     Note:
-    The global context is accessed using "this" when scope() is called. A
-    different context may be used if the scope() function is applied to another
-    object instead.
+    The global context is accessed using either "this.global" if available or
+    just "this" otherwise, within an immediately invoked function expression,
+    at the time when scope-bootstrap.js runs.
   */
   function scope(code,needs,name){
-    // call code synchronously, without taking needs into account
-    var result = code(context);
+    // call code synchronously in global context,
+    // without taking needs into account
+    var result = code(globalContext);
     if (typeof name === "string"){
-      context[name] = result;
+      globalContext[name] = result;
     }
   }
 
-  return scope;
+  // export scope() to global context
+  globalContext.scope = scope;
 }());
