@@ -1,4 +1,4 @@
-// Static asynchronous implementation in parent context
+// Static asynchronous definition in parent context
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
