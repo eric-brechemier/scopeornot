@@ -73,16 +73,16 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code,needs,name)
+    Function: scope(code[,needs[,name]])
     Run code when all needs are ready
 
     This is a filter defined on top of another implementation of scope().
 
     Parameters:
       code  - function(context), the code to run with the context as parameter
-      needs - array of strings, the names of the properties that this code
-              would like to find in the context
-      name  - string, optional, name of the context property to set the value
+      needs - optional, array of strings, the names of the properties that
+              this code would like to find in the context
+      name  - optional, string, name of the context property to set the value
               that the code may return
 
     Note:

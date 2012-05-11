@@ -3,16 +3,16 @@
 // https://github.com/eric-brechemier/scopeornot
 
 /*
-  Function: scope(code,needs,name)
+  Function: scope(code[,needs[,name]])
   Run code asynchronously once all dependencies listed in needs have been
   loaded, and set the return value, if any, to a property with given name in
   the single shared context.
 
   Parameters:
     code  - function(context), the code to run with the context as parameter
-    needs - array of strings, the names of the properties that this code would
-            like to find in the context, to be loaded asynchronously
-    name  - string, optional, name of the context property to set the value
+    needs - optional, array of strings, the names of the properties that this
+            code would like to find in the context, to be loaded asynchronously
+    name  - optional, string, name of the context property to set the value
             that the code may return
 
   Notes:

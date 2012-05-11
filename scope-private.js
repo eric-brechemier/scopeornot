@@ -15,8 +15,8 @@ scope(function(parentContext){
     Copy missing needs found in parent context to private context
 
     Parameter:
-      needs - optional array of strings, the names of the properties that code
-              would like to find in the private context, defaults to []
+      needs - optional array of strings, the names of the properties that
+              code would like to find in the private context, defaults to []
 
     Note:
     Nothing happens in case needs argument is null or undefined.
@@ -68,17 +68,17 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code,needs,name)
+    Function: scope(code[,needs[,name]])
     Run code immediately in a private context, and set the return value,
     if any, to a property with given name in the private context
 
     Parameters:
       code - function(context), the code to run with the private context
              provided as parameter
-      needs - array of strings, the names of the properties that this code
-              would like to find in the private context
-      name - string, optional, name of the private context property to set the
-             value that the code may return
+      needs - optional, array of strings, the names of the properties that
+              this code would like to find in the private context
+      name - optional, string, name of the private context property to set
+             the value that the code may return
 
     Note:
     This implementation is expected to be defined on top of scope-bootstrap.
