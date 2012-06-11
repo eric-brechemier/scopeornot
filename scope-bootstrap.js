@@ -5,7 +5,7 @@
 (function(){
   var
     // global context
-    globalContext = this.global || this;
+    globalContext = this;
 
   /*
     Function: scope(code[,needs[,name]])
