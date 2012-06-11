@@ -2,103 +2,110 @@
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-/*
-  Function: scope(code[,needs[,name]])
-  Run code asynchronously once all dependencies listed in needs have been
-  loaded, and set the return value, if any, to a property with given name in
-  the single shared context.
+// This script must be loaded after scope-bootstrap.js and an implementation
+// of the Asynchronous Module Definition such as RequireJS.
+// To define modules in private scope instead of global scope, load
+// scope-private.js as well after scope-bootstrap.js and before this script.
 
-  Parameters:
-    code  - function(context), the code to run with the context as parameter
-    needs - optional, array of strings, the names of the properties that this
-            code would like to find in the context, to be loaded asynchronously
-    name  - optional, string, name of the context property to set the value
-            that the code may return
-
-  Notes:
-  * when only a code function is provided (no dependencies), the function is
-    called immediately and thus runs synchronously instead of asynchronously
-  * likewise, when all dependencies are available, the code function runs
-    synchronously, and the result is associated with given name if any
-  * the context is a shared singleton object in this implementation
-*/
-/*global scope:true, define */
-var scope = (function(){
+/*global scope, require, define */
+scope(function(parentContext){
 
   var
-    // single shared context
-    context = {},
+    // declare alias
+    parentScope = parentContext.scope;
 
-    // counter for throw-away ids
-    counter = 0;
+  /*
+    Function: listMissingNeeds(needs,context): array
+    List the needed properties missing from the context
 
-  function scope(code,needs,name){
+    Parameters:
+      needs - array of strings, names of the properties that the code expects
+              to find in context
+      context - object, set of properties in current context
+
+    Returns:
+      array of strings, the list of properties from needs that have not beed
+      found in the context, in same order
+  */
+  function listMissingNeeds(needs,context){
     var
-      id = name,
-      dependencies = [],
+      missingNeeds = [],
+      need,
       i,
-      length,
-      moduleId,
-      result;
+      length;
 
-    if (arguments.length===1){
-      // no dependency, no id - just run code synchronously now
-      code(context);
-      return;
-    }
-
-    // Fill in dependencies with the list of module ids not found in context
     for (i=0, length=needs.length; i<length; i++){
-      moduleId = needs[i];
-      if ( !context.hasOwnProperty(moduleId) ){
-        dependencies.push(moduleId);
+      need = needs[i];
+      if ( !context.hasOwnProperty(need) ){
+        missingNeeds.push(need);
       }
     }
 
-    function factory(){
-      // Copy dependencies provided as arguments to the context
-      for (i=0, length=dependencies.length; i<length; i++){
-        moduleId = dependencies[i];
-        context[moduleId] = arguments[i];
-      }
+    return missingNeeds;
+  }
 
-      // Call the code with shared context
-      result = code(context);
+  /*
+    Function: exportDependencies(context,names,values)
+    Set the values of properties with given names in the context
 
-      // Copy the returned value to shared context
-      // and return it for the AMD loader
-      if (typeof name==="string"){
-        context[name] = result;
-        return result;
-      }
-    }
+    Parameters:
+      context - object, the set of properties in current context
+      names - array of strings, the list of names of properties to set
+      values - array, the list of values of properties to set
+  */
+  function exportDependencies(context,names,values){
+    var
+      i,
+      length;
 
-    // no dependency, run factory() and define the result instead
-    if (dependencies.length===0){
-      result = factory();
-      // replace the factory
-      // The result could be provided directly as "factory" in most cases,
-      // when the result is an object, but a result function gets called is
-      // mistaken for a factory and gets called instead of defined.
-      factory = function(){
-        return result;
-      };
-    }
-
-    if (arguments.length===2){
-      // When id is omitted, generate a unique throw-away id.
-      // This is needed to avoid mismatched anonymous define() error:
-      // http://requirejs.org/docs/errors.html#mismatch
-      counter++;
-      define('scope/anonymous'+counter,dependencies,factory);
-      return;
-    }
-
-    // typical case, all arguments included
-    if (arguments.length===3){
-      define(id,dependencies,factory);
+    for (i=0, length=names.length; i<length; i++){
+      context[ names[i] ] = values[i];
     }
   }
 
+  /*
+    Function: scope(code[,needs[,name]])
+    Load missing needs and run code asynchronously with AMD,
+    copy the exported module to a property with given name in shared context
+
+    Parameters:
+      code  - function(context), the code to run with the shared context
+              as parameter
+      needs - optional, array of strings, the names of the properties that this
+              code would like to find in the context; missing needs will be
+              loaded using AMD
+      name  - optional, string, name of the context property to set the value
+              that the code may return in shared context and as module export
+              for AMD
+  */
+  function scope(code,needs,name){
+    if (typeof needs === "undefined") {
+      // run code now synchronously
+      parentScope(code);
+      return;
+    }
+
+    parentScope(function(context){
+      var
+        id = name,
+        dependencies = listMissingNeeds(needs,context),
+        factory = function(){
+          exportDependencies(context,dependencies,arguments);
+          var result = code(context);
+          if (typeof name === "string"){
+            context[name] = result;
+          }
+          return result;
+        };
+
+      if (typeof id === "string"){
+        define(id,dependencies,factory);
+      } else {
+        require(dependencies,factory);
+      }
+    },needs);
+  }
+
   return scope;
-}());
+
+},["scope"],"scope");
