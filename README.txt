@@ -126,6 +126,7 @@ INCLUDED IMPLEMENTATIONS
 
   scope-api.js - null implementation (does nothing) with inline documentation
   scope-bootstrap.js - static synchronous definition in global context
+  scope-bootstrap-ringojs.js - alternative bootstrap implementation for RingoJS
   scope-private.js - static synchronous definition in private context
   scope-ready.js - static asynchronous definition in parent context
   scope-log.js - log when scope() is called and when code actually runs
@@ -176,4 +177,5 @@ HISTORY
   2012-05-09, v0.0.9, Enhance scope-private: import inherited properties too
   2012-05-10, v0.1.0, Bug fix in scope-log: add missing dependency "scope"
   2012-05-11, v0.2.0, CommonJS Modules: scope-cjs
+  2012-06-11, v0.2.1, Global definition in RingoJS: scope-bootstrap-ringojs
 
