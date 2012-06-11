@@ -132,7 +132,6 @@ INCLUDED IMPLEMENTATIONS
   scope-log.js - log when scope() is called and when code actually runs
   scope-amd.js - Asynchronous Module Definition [3]
   scope-cjs.js - CommonJS Modules [2]
-  scope-record.js - deprecated
 
 PRIOR ART
 
@@ -178,4 +177,5 @@ HISTORY
   2012-05-10, v0.1.0, Bug fix in scope-log: add missing dependency "scope"
   2012-05-11, v0.2.0, CommonJS Modules: scope-cjs
   2012-06-11, v0.2.1, Global definition in RingoJS: scope-bootstrap-ringojs
+  2012-06-11, v0.2.2, Delete deprecated script scope-record
 
