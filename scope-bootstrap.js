@@ -8,7 +8,7 @@
     globalContext = this;
 
   /*
-    Function: scope(code[,needs[,name]])
+    Function: scope(code[,needs[,name]]): any
     Run code immediately in global context, without taking needs into account,
     and set the return value, if any, to a property with given name in the
     global context.
@@ -22,10 +22,8 @@
       name  - optional, string, name of the global context property to set
               the value that the code may return
 
-    Note:
-    The global context is accessed using either "this.global" if available or
-    just "this" otherwise, within an immediately invoked function expression,
-    at the time when scope-bootstrap.js runs.
+    Returns:
+      any, the return value of the code
   */
   function scope(code,needs,name){
     // call code synchronously in global context,
@@ -34,6 +32,7 @@
     if (typeof name === "string"){
       globalContext[name] = result;
     }
+    return result;
   }
 
   // export scope() to global context
