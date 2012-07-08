@@ -64,7 +64,7 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code[,needs[,name]])
+    Function: scope(code[,needs[,name]]): any
     Load missing needs and run code asynchronously with AMD,
     copy the exported module to a property with given name in shared context
 
@@ -77,21 +77,25 @@ scope(function(parentContext){
       name  - optional, string, name of the context property to set the value
               that the code may return in shared context and as module export
               for AMD
+
+    Returns:
+      any, the return value of this code if it has run synchronously,
+      or null if the code has not run yet
   */
   function scope(code,needs,name){
     if (typeof needs === "undefined") {
       // run code now synchronously
-      parentScope(code);
-      return;
+      return parentScope(code);
     }
 
-    parentScope(function(context){
+    return parentScope(function(context){
       var
+        result = null,
         id = name,
         dependencies = listMissingNeeds(needs,context),
         factory = function(){
           exportDependencies(context,dependencies,arguments);
-          var result = code(context);
+          result = code(context);
           if (typeof name === "string"){
             context[name] = result;
           }
@@ -103,6 +107,7 @@ scope(function(parentContext){
       } else {
         require(dependencies,factory);
       }
+      return result;
     },needs);
   }
 
