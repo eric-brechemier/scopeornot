@@ -73,7 +73,7 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code[,needs[,name]])
+    Function: scope(code[,needs[,name]]): any
     Run code when all needs are ready
 
     This is a filter defined on top of another implementation of scope().
@@ -85,22 +85,27 @@ scope(function(parentContext){
       name  - optional, string, name of the context property to set the value
               that the code may return
 
+    Returns:
+      any, the return value of this code if it has run synchronously,
+      or null if the code has not run yet
+
     Note:
     The code runs immediately if all needs are ready. Otherwise, the call is
     queued for asynchronous execution. Each time code runs, all queued calls
     are tried again.
   */
   function scope(code,needs,name){
-    parentScope(function(context){
+    return parentScope(function(context){
       if ( !isReady(needs,context) ){
         queue.push(function(){
           // retry same call
           scope(code,needs,name);
         });
-        return;
+        return null;
       }
-      parentScope(code,needs,name);
+      var result = parentScope(code,needs,name);
       processQueue();
+      return result;
     },needs);
   }
 
