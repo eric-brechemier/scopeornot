@@ -28,7 +28,7 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code[,needs[,name]])
+    Function: scope(code[,needs[,name]]): any
     Filter to log the call to scope() and when the code runs
 
     Parameters:
@@ -38,6 +38,10 @@ scope(function(parentContext){
       name  - optional, string, name of the context property to set the value
               that the code may return
 
+    Returns:
+      any, the return value of this code if it has run synchronously,
+      or null if the code has not run yet
+
     Note:
     Nothing happens in case console.log() is not available. The "console" is
     requested in the context at the time when scope() is called to define this
@@ -46,7 +50,7 @@ scope(function(parentContext){
   */
   function scope(code,needs,name){
     log.call(console,getTimeStamp(),":","scope(",code,",",needs,",",name,")");
-    parentScope(function(context){
+    return parentScope(function(context){
       log.call(console,getTimeStamp(),":","code(",code,",",needs,",",name,")");
       return code(context);
     },needs,name);
