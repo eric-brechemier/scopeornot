@@ -503,4 +503,5 @@ HISTORY
   2012-05-11, v0.2.0, CommonJS Modules: scope-cjs
   2012-06-11, v0.2.1, Global definition in RingoJS: scope-bootstrap-ringojs
   2012-06-11, v0.2.2, Delete deprecated script scope-record
+  2012-07-08, v0.3.0, scope() now returns the result of the code or null
 
