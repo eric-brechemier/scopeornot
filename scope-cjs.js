@@ -48,7 +48,7 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code,needs,name)
+    Function: scope(code,needs,name): any
     Load missing needs with require(), run code and set the result to a
     property with given name in both shared context and module exports
 
@@ -59,9 +59,13 @@ scope(function(parentContext){
               would like to find in the context
       name  - string, optional, name of the property to set the value that the
               code may return, both in shared context and in module exports
+
+    Returns:
+      any, the return value of this code if it has run synchronously,
+      or null if the code has not run yet
   */
   function scope(code,needs,name){
-    parentScope(function(context){
+    return parentScope(function(context){
       requireMissingNeeds(needs,context);
       var result = code(context);
       if (typeof name === "string"){
