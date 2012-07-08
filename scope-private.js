@@ -68,7 +68,7 @@ scope(function(parentContext){
   }
 
   /*
-    Function: scope(code[,needs[,name]])
+    Function: scope(code[,needs[,name]]): any
     Run code immediately in a private context, and set the return value,
     if any, to a property with given name in the private context
 
@@ -80,15 +80,18 @@ scope(function(parentContext){
       name - optional, string, name of the private context property to set
              the value that the code may return
 
+    Returns:
+      any, the return value of the code
+
     Note:
     This implementation is expected to be defined on top of scope-bootstrap.
     It replaces the old implementation of scope() that was used for its own
     definition.
 
-    If a requested property is missing in the private context but present in the
-    parent context, the property is copied from the parent context to the private
-    context beforehand. The intent is to make global objects available in the
-    private context, while preserving the global context.
+    If a requested property is missing in the private context but present in
+    the parent context, the property is copied from the parent context to the
+    private context beforehand. The intent is to make global objects available
+    in the private context, while preserving the global context.
 
     The only exception is the property "scope", which will be copied from the
     private context to the parent context, to allow the replacement of current
@@ -98,6 +101,7 @@ scope(function(parentContext){
     importFromParentContext(needs);
     var result = code(privateContext);
     exportToPrivateContext(name,result);
+    return result;
   }
 
   return scope;
