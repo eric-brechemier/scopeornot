@@ -262,107 +262,133 @@ DESCRIPTION
 
 EXAMPLES
 
-  * Run code:
-  scope(function(context){
-    function timestamp(){
-      return Number(new Date());
-    }
+  First, scope() can be used as a replacement for the Immediately-Invoked
+  Function Expression used in the JavaScript module pattern:
 
-    if (context.log){
-      context.log( "Now: "+timestamp() );
-    }
+  var assert = scope(function(){
+    (...)
+
+    return {
+      isTrue: isTrue,
+      isFalse: isFalse,
+      equals: equals,
+      arrayEquals: arrayEquals,
+      fail: fail
+    };
   });
 
-  * Request what you need:
+  Second, you may declare the names of properties expected by a module
+  in the list of needs. These properties, if available, will be set in the
+  context object provided as argument:
+
   scope(function(context){
     var
-      // declare aliases
-      Number = context.Number,
-      Date = context.Date,
-      log = context.log;
-
-    function timestamp(){
-      return Number(new Date());
-    }
-
-    log( "Now: "+timestamp() );
-  },["log","Number","Date"]);
-
-  * Return what you wish to share and give it a name:
-  scope(function(){
-    function timestamp(){
-      return Number(new Date());
-    }
-    return timestamp;
-  },[],"timestamp");
-
-  * Define a module with dependencies:
-  scope(function(context){
-    var
-      // Private aliases
       timestamp = context.timestamp,
-      log = context.log,
+      assert = context.assert;
 
-      // Private fields
-      startTime = null,
-      endTime = null;
+    assert.equals(typeof timestamp, "function",
+                                  "timestamp() is expected to be a function");
 
-    // Private functions
-    function logEvent(name,time){
-      log(name+": "+time);
-    }
+    assert.fail("Missing tests");
 
-    function start(){
-      startTime = timestamp();
-      logEvent("start",startTime);
-    }
+  },["assert","timestamp"]);
 
-    function stop(){
-      endTime = timestamp();
-      logEvent("end",endTime);
-    }
+  Finally, you may give a name to each module; the value returned by the
+  function will be set to a property with given name in the context, and
+  this name may be used in the list of needs of other modules:
 
-    function getDuration(){
-      if (startTime === null){
-        return 0;
+  // Declare an alias "assert" for "bezen.org/assert"
+  scope(function(context){
+    return context["bezen.org/assert"];
+  },["bezen.org/assert"],"assert");
+
+  // Copy global Number to context
+  scope(function(){
+    return Number;
+  },[],"Number");
+
+  // Copy global Date to context
+  scope(function(){
+    return Date;
+  },[],"Date");
+
+  // Declare the "timestamp" module
+  scope(function(context){
+    var
+      Number = context.Number,
+      Date = context.Date;
+
+    function timestamp(){
+      if (typeof Date.now == "function"){
+        return Date.now();
       }
-      if (endTime === null){
-        return timestamp() - startTime;
-      }
-      return endTime - startTime;
-    }
-
-    // Public API
-    return {
-      start: start,
-      stop: stop,
-      getDuration: getDuration
+      return Number(new Date());
     };
-  },["timestamp","log"],"timeModule");
+
+    return timestamp;
+  },["Number","Date"],"timestamp");
+
+  // Declare unit tests for the timestamp module in "testTimestamp"
+  scope(function(context){
+    var
+      timestamp = context.timestamp,
+      assert = context.assert;
+
+    function testTimestamp(){
+      assert.equals(typeof timestamp, "function",
+                                  "timestamp() is expected to be a function");
+      var before = Number(new Date());
+      var value = timestamp();
+      var after = Number(New Date());
+      assert.equals(typeof value, "Number",
+                                "timestamp() is expected to return a number");
+      assert.isTrue( before <= value && value <= after,
+            "timestamp() is expected to return current time in milliseconds");
+    }
+
+    return testTimestamp;
+  },["assert","timestamp"],"testTimestamp");
+
+  // Run unit tests for timestamp module
+  scope(function(context){
+    context.testTimestamp();
+  },["testTimestamp"]);
 
 APPLICATION PROGRAMMING INTERFACE (API)
 
-  Function: scope(code,needs,name)
-  Run code at some point maybe, optionally taking needs into account, and
-  optionally set the return value to a property with given name in the context.
+  Function: scope(code,needs,name): any
+  Run code with needs to define a module with given name
 
   Parameters:
     code  - function(context), the code to run with the context as parameter
     needs - array of strings, the names of the properties that this code would
             like to find in the context
-    name  - string, optional, name of the context property to set the value
-            that the code may return
+    name  - string, optional, name of the context property to set with the
+            value returned by this code
+
+  Returns:
+    any, the return value of this code if it has run synchronously,
+    or null if the code has not run yet
 
   Notes:
+  A null or undefined value may be provided for optional arguments, and will
+  be treated as if the argument had not been included.
+
+  All arguments have a fixed position; it is not valid to omit the second
+  parameter or change the order of parameters. The three valid forms are:
+    scope(code);
+    scope(code,needs);
+    scope(code,needs,name);
+
   The context may be, depending on the implementation, the global object or the
   window object in browser environment, a shared singleton object, or a context
   object created specifically for this code based on its name and needs.
 
   Implementations of scope() may be stacked, starting with scope-bootstrap.js:
   each implementation shall define itself as "scope" in the context and expect
-  that a new implementation can be defined in a call to scope() using the name
-  "scope" as well. It is up to the new implementation to call the old one,
-  before or after its own code or not at all, to fit its purpose.
+  that a new implementation may be defined in a call to scope() using the name
+  "scope" as well. It is up to the child implementation to call the parent one,
+  before or after its own code or not at all, to fit its design.
 
 INCLUDED IMPLEMENTATIONS
 
