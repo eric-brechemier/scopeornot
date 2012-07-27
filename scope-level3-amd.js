@@ -1,11 +1,10 @@
+// Level 3
 // Asynchronous Module Definition in single shared context
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-// This script must be loaded after scope-bootstrap.js and an implementation
-// of the Asynchronous Module Definition such as RequireJS.
-// To define modules in private scope instead of global scope, load
-// scope-private.js as well after scope-bootstrap.js and before this script.
+// This script must be loaded in level 3 and depends on an implementation
+// of the Asynchronous Module Definition such as RequireJS, not included.
 
 /*global scope, require, define */
 scope(function(parentContext){

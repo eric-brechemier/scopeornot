@@ -1,3 +1,4 @@
+// Level 1
 // Static synchronous definition in global context
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot

@@ -384,22 +384,121 @@ APPLICATION PROGRAMMING INTERFACE (API)
   window object in browser environment, a shared singleton object, or a context
   object created specifically for this code based on its name and needs.
 
-  Implementations of scope() may be stacked, starting with scope-bootstrap.js:
-  each implementation shall define itself as "scope" in the context and expect
+  Implementations of scope() may be stacked, starting with scope bootstrap,
+  scope-level1-global.js or in RingoJS scope-level1-global-ringojs.js.
+  Each implementation shall define itself as "scope" in the context and expect
   that a new implementation may be defined in a call to scope() using the name
   "scope" as well. It is up to the child implementation to call the parent one,
   before or after its own code or not at all, to fit its design.
 
-INCLUDED IMPLEMENTATIONS
+GETTING STARTED
 
-  scope-api.js - null implementation (does nothing) with inline documentation
-  scope-bootstrap.js - static synchronous definition in global context
-  scope-bootstrap-ringojs.js - alternative bootstrap implementation for RingoJS
-  scope-private.js - static synchronous definition in private context
-  scope-ready.js - static asynchronous definition in parent context
-  scope-log.js - log when scope() is called and when code actually runs
-  scope-amd.js - Asynchronous Module Definition [3]
-  scope-cjs.js - CommonJS Modules [2]
+  The minimal requirement is to load scope-level1-global.js to define
+  the global scope() function. This is the level 1 of scope-or-not usage.
+  You can then use scope() in the scripts loaded subsequently.
+
+  In the browser:
+  <script src="scopeornot/scope-level1-global.js"></script>
+  <script src="myscript.js"></script>
+
+  ------------------------------------------------------------
+    myscript.js
+  ------------------------------------------------------------
+    scope(function(context){
+      return {
+        // my module
+      };
+    },[],"myModule");
+  ------------------------------------------------------------
+
+  At this point, myModule will be set to a property of the global object,
+  and can be accessed as myModule from legacy code.
+
+  You can now make the module private without changing its code, by adding
+  an extra layer of scope, getting to level 2:
+
+  In the browser:
+  <script src="scopeornot/scope-level1-global.js"></script>
+  <script src="scopeornot/scope-level2-shared.js"></script>
+  <script src="myscript.js"></script>
+
+  There is no myModule property on the global object anymore. The property
+  is now set on a private context object instead, shared by all modules.
+
+  Similarly, you can make the module definition available to modules
+  using a different loader or convention by adding a level 3 script.
+  The level 3 scripts may depend on external loader libraries, for example
+  require.js to add support for Asynchronous Module Definition (AMD).
+
+  In the browser:
+  <script src="scopeornot/scope-level1-global.js"></script>
+  <script src="scopeornot/scope-level2-shared.js"></script>
+  <script src="requirejs/require.js"></script>
+  <script src="scopeornot/scope-level3-amd.js"></script>
+  <script src="myscript.js"></script>
+
+  Without changing the code in your script, you just made your module
+  define itself with an Asynchronous Module Definition (AMD). As a bonus,
+  if you list a module that is not loaded yet in the list of needs of your
+  module, it will get loaded asynchronously using require.js before your
+  module gets initialized. See how module identifiers are mapped to paths
+  and how to customize these paths in the RequireJS API documentation [23].
+
+  To make your code easier to test and to run in different JavaScript
+  environment, it is useful to copy properties available in the global
+  scope in a given environment into the private context. For example,
+  document and window may be copied from the global scope in a browser,
+  and stub modules may be defined for unit tests running server-side:
+
+  ------------------------------------------------------------
+    browser.js
+  ------------------------------------------------------------
+    scope(){
+      return window;
+    },[],"window");
+
+    scope(){
+      return document;
+    },[],"document");
+  ------------------------------------------------------------
+
+  ------------------------------------------------------------
+    browser-stub.js
+  ------------------------------------------------------------
+    scope(){
+      return {
+        // stub window object
+        (...)
+      };
+    },[],"window");
+
+    scope(){
+      return {
+        // stub document object
+        (...)
+      };
+    },[],"document");
+  ------------------------------------------------------------
+
+  It is often useful to copy a property from the global scope to the private
+  context, making your code more portable than when accessing global objects
+  directly:
+
+BUILDING BLOCKS
+
+  scope-level0-api.js - null implementation (does nothing)
+  scope-level1-global.js - scope bootstrap in global context
+  scope-level1-global-ringojs.js - alternative bootstrap for RingoJS
+  scope-level2-shared.js - private context shared by all modules
+  scope-level2-unique.js - (ROADMAP) private context created for each module
+  scope-level3-ready.js - only run code once all dependencies are available
+  scope-level3-commonjs.js - CommonJS Modules [2]
+  scope-level3-nodejs.js - (ROADMAP) variant of CommonJS Modules for node.js
+  scope-level3-amd.js - Asynchronous Module Definition [3]
+  scope-level3-amd-anonymous.js - (ROADMAP) variant of AMD ignoring module name
+  scope-level3-labjs.js - (ROADMAP) asynchronous loading using LABjs
+  scope-level3-headjs.js - (ROADMAP) asynchronous loading using head.js
+  scope-level8-log.js - log when scope() is called and when code actually runs
 
 REFERENCES
 
@@ -483,6 +582,9 @@ REFERENCES
   [22] ParisJS
   http://parisjs.org
 
+  [23] RequireJS API documentation
+  http://www.requirejs.org/docs/api.html
+
 PRIOR ART
 
   scopeornot was inspired by the scope() function in my-common project [21],
@@ -504,4 +606,5 @@ HISTORY
   2012-06-11, v0.2.1, Global definition in RingoJS: scope-bootstrap-ringojs
   2012-06-11, v0.2.2, Delete deprecated script scope-record
   2012-07-08, v0.3.0, scope() now returns the result of the code or null
+  2012-07-27, v0.4.0, Getting started with building blocks organized in levels
 

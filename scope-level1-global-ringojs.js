@@ -1,8 +1,9 @@
+// Level 1
 // Static synchronous definition in global context for RingoJS
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-// This script is a replacement for scope-bootstrap when using RingoJS.
+// This script is a replacement for scope-level1-global.js when using RingoJS.
 // In RingoJS, the global object is found in 'this.global' instead of 'this'.
 
 (function(){

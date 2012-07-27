@@ -1,8 +1,9 @@
-// Static synchronous definition in private context
+// Level 2
+// Static synchronous definition in a private context shared by all modules
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-// This script must be loaded after scope-bootstrap.js
+// This script must be loaded in level 2
 
 /*global scope*/
 scope(function(parentContext){

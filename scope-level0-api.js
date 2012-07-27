@@ -1,3 +1,4 @@
+// Level 0
 // Application Programming Interface (API) of scopeornot
 // https://github.com/eric-brechemier/scopeornot
 // This is a null implementation (does nothing)

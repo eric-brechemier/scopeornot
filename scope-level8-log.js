@@ -1,9 +1,11 @@
+// Level 8
 // Log when scope() is called and when code actually runs
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-// This is a filter which must be loaded after another implementation,
-// for example scope-bootstrap.js, scope-private.js and scope-ready.js
+// This is a filter which may loaded at any level above level 1, and depends
+// on the following modules "console", "Date", "Number" in the context,
+// not included.
 
 /*global scope*/
 scope(function(parentContext){
@@ -13,8 +15,7 @@ scope(function(parentContext){
     parentScope = parentContext.scope,
     Date = parentContext.Date,
     Number = parentContext.Number,
-    console = parentContext.console || {},
-    log = console.log || function(){};
+    console = parentContext.console;
 
   /*
     Function: getTimeStamp(): number

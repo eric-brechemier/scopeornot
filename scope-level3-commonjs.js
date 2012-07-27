@@ -1,10 +1,10 @@
+// Level 3
 // CommonJS Modules
 // Implementation of scopeornot API
 // https://github.com/eric-brechemier/scopeornot
 
-// This script must be loaded after scope-bootstrap.js.
-// It may be loaded after scope-bootstrap.js and scope-private.js
-// to define modules in private scope instead of global scope.
+// This script must be loaded in level 3 and depends on the availability
+// of the CommonJS require() function in the JavaScript environment.
 
 /*global scope, require, exports */
 scope(function(parentContext){
