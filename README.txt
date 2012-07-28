@@ -480,10 +480,6 @@ GETTING STARTED
     },[],"document");
   ------------------------------------------------------------
 
-  It is often useful to copy a property from the global scope to the private
-  context, making your code more portable than when accessing global objects
-  directly:
-
 BUILDING BLOCKS
 
   scope-level0-api.js - null implementation (does nothing)
