@@ -34,10 +34,10 @@ scope(function(parentContext){
       return result;
     }
 
-    privateContext[name] = value;
+    privateContext[name] = result;
     if (name === "scope"){
       // replace the current implementation of scope() in parent context
-      parentContext.scope = value;
+      parentContext.scope = result;
     }
     return result;
   }
