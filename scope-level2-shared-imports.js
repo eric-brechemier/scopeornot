@@ -1,3 +1,5 @@
+// This module is deprecated and will be deleted in a future version
+
 // Level 2
 // Static synchronous definition in a private context shared by all modules
 // Implementation of scopeornot API
