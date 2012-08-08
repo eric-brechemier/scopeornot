@@ -42,5 +42,6 @@ scope(function(parentContext){
     return result;
   }
 
+  privateContext.scope = scope;
   return scope;
 },[],"scope");

@@ -605,4 +605,5 @@ HISTORY
   2012-07-08, v0.3.0, scope() now returns the result of the code or null
   2012-07-27, v0.4.0, Getting started with building blocks organized in levels
   2012-07-30, v0.4.1, Deprecate inherited properties introduced in v0.0.9
+  2012-08-08, v0.4.2, Bug fix: add scope in shared private context
 
