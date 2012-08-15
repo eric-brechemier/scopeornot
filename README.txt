@@ -492,7 +492,6 @@ BUILDING BLOCKS
   scope-level3-nodejs.js - (ROADMAP) variant of CommonJS Modules for node.js
   scope-level3-amd.js - Asynchronous Module Definition [3]
   scope-level3-amd-anonymous.js - (ROADMAP) variant of AMD ignoring module name
-  scope-level3-labjs.js - (ROADMAP) asynchronous loading using LABjs
   scope-level3-headjs.js - (ROADMAP) asynchronous loading using head.js
   scope-level8-log.js - log when scope() is called and when code actually runs
 
