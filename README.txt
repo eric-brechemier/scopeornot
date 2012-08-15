@@ -486,6 +486,7 @@ BUILDING BLOCKS
   scope-level1-global.js - scope bootstrap in global context
   scope-level1-global-ringojs.js - alternative bootstrap for RingoJS
   scope-level2-shared.js - private context shared by all modules
+  scope-level2-shared-imports.js - deprecated
   scope-level2-unique.js - (ROADMAP) private context created for each module
   scope-level3-ready.js - only run code once all dependencies are available
   scope-level3-commonjs.js - CommonJS Modules [2]
@@ -602,4 +603,6 @@ HISTORY
   2012-06-11, v0.2.2, Delete deprecated script scope-record
   2012-07-08, v0.3.0, scope() now returns the result of the code or null
   2012-07-27, v0.4.0, Getting started with building blocks organized in levels
+  2012-07-30, v0.4.1, Deprecate inherited properties introduced in v0.0.9
+  2012-08-08, v0.4.2, Bug fix: add scope in shared private context
 
