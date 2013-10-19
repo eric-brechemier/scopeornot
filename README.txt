@@ -488,12 +488,14 @@ BUILDING BLOCKS
   scope-level2-shared.js - private context shared by all modules
   scope-level2-shared-imports.js - deprecated
   scope-level2-unique.js - (ROADMAP) private context created for each module
+  scope-level2-within.js - (ROADMAP) shared context and events in within() [24]
   scope-level3-ready.js - only run code once all dependencies are available
   scope-level3-commonjs.js - CommonJS Modules [2]
   scope-level3-nodejs.js - (ROADMAP) variant of CommonJS Modules for node.js
   scope-level3-amd.js - Asynchronous Module Definition [3]
   scope-level3-amd-anonymous.js - (ROADMAP) variant of AMD ignoring module name
   scope-level3-headjs.js - (ROADMAP) asynchronous loading using head.js
+  scope-level4-dynamic.js - (ROADMAP) asynchronous loading based on scope-ready
   scope-level8-log.js - log when scope() is called and when code actually runs
 
 REFERENCES
@@ -581,6 +583,11 @@ REFERENCES
   [23] RequireJS API documentation
   http://www.requirejs.org/docs/api.html
 
+  [24] within project on GitHub
+  "within is a factory of semi-private spaces
+   where properties and events can be shared"
+  https://github.com/eric-brechemier/within
+
 PRIOR ART
 
   scopeornot was inspired by the scope() function in my-common project [21],
@@ -605,4 +612,7 @@ HISTORY
   2012-07-27, v0.4.0, Getting started with building blocks organized in levels
   2012-07-30, v0.4.1, Deprecate inherited properties introduced in v0.0.9
   2012-08-08, v0.4.2, Bug fix: add scope in shared private context
+  2013-XX-XX, v0.5.0, Move unit tests from scope-in-browser to this project
+  2013-XX-XX, v0.5.1, Bug fix in scope-log: add missing declarations
+  2013-XX-XX, v0.5.2, Bug fix in scope-amd: handle missing hasOwnProperty()
 
