@@ -106,7 +106,8 @@
   In October 2009, I added a build script in the bezen.org JavaScript library
   to check the code using [JSLint][], combine the code using [Combiner][] and
   minify the combined script using [YUI Compressor][]. Under the influence of
-  Perl, I also added the property '_' in the module API, private by convention.
+  Perl, I also added the property '\_' in the module API, private by
+  convention.
 
   The format of the module pattern expected in JSLint had evolved. The function
   had now to be enclosed in parentheses to explicit its nature of expression.
