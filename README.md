@@ -596,7 +596,7 @@
 
 [IIFE]: http://benalman.com/news/2010/11/immediately-invoked-function-expression/
 
-[BROWSER]: "window API on MDN" https://developer.mozilla.org/en/DOM/window
+[BROWSER]: https://developer.mozilla.org/en/DOM/window "window API on MDN"
 
   * [CommonJS Modules][CJS]
 
