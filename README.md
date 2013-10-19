@@ -571,7 +571,7 @@
   * [On ES 6 Modules][SCHLUETER-2012-06-25]  
     2012-06-25, by Isaac Z. Schlueter
 
-[SHLUETER-2012-06-25]: http://blog.izs.me/post/25906678790/on-es-6-modules
+[SCHLUETER-2012-06-25]: http://blog.izs.me/post/25906678790/on-es-6-modules
 
   * [Comments on Isaac's ES modules post][BURKE-2012-06-26]  
     2012-06-26, by James Burke
@@ -581,7 +581,7 @@
   * [Static module resolution][HERMAN-2012-06-29]  
     2012-06-29, by Dave Herman
 
-[HERMAN]: http://calculist.org/blog/2012/06/29/static-module-resolution/
+[HERMAN-2012-06-29]: http://calculist.org/blog/2012/06/29/static-module-resolution/
 
   * [JavaScript Module Pattern: In-Depth][JS-MODULE-PATTERN]  
     2010-03-12, by Ben Cherry
