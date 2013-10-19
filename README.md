@@ -539,7 +539,7 @@
   * [JSLint - The JavaScript code quality tool][JSLint]  
     by Douglas Crockford  
 
-[JSLint]: "The JavaScript code quality tool" http://jslint.com/
+[JSLint]: http://jslint.com/ "The JavaScript code quality tool"
 
   * [Introducing Combiner, a JavaScript/CSS concatenation tool][Combiner]  
   2009-09,22, by Nicholas C. Zakas  
