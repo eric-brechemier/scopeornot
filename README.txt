@@ -14,6 +14,16 @@ LICENSE
   MIT
   http://www.opensource.org/licenses/MIT
 
+RELATED PROJECTS
+
+  * [scope-presentation][] - introduction to scopeornot
+  * [scope-in-browser][] - examples of use in the browser
+  * [scope-in-node][] - examples of use in Node.js
+
+[scope-presentation]: https://github.com/eric-brechemier/scopeornot-presentation
+[scope-in-browser]: https://github.com/eric-brechemier/scope-in-browser
+[scope-in-node]: https://github.com/eric-brechemier/scope-in-node
+
 BACKGROUND STORY
 
   In November 2008, while working on the development of mangaconseil.com [1],
