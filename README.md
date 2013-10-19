@@ -536,10 +536,10 @@
 
 [bezen.org]: http://bezen.org/javascript/ "bezen.org JavaScript library"
 
-  * [JSLint - The JavaScript code quality tool][JSLINT]  
+  * [JSLint - The JavaScript code quality tool][JSLint]  
     by Douglas Crockford  
 
-[JSLINT]: "The JavaScript code quality tool" http://jslint.com/
+[JSLint]: "The JavaScript code quality tool" http://jslint.com/
 
   * [Introducing Combiner, a JavaScript/CSS concatenation tool][Combiner]  
   2009-09,22, by Nicholas C. Zakas  
