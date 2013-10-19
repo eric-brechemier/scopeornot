@@ -534,7 +534,7 @@
 
 [CROCKFORD-2008]: http://shop.oreilly.com/product/9780596517748.do
 
-[bezen.org]: "bezen.org JavaScript library" http://bezen.org/javascript/
+[bezen.org]: http://bezen.org/javascript/ "bezen.org JavaScript library"
 
   * [JSLint - The JavaScript code quality tool][JSLINT]  
     by Douglas Crockford  
