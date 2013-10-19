@@ -10,7 +10,8 @@
 
 ## AUTHOR ##
 
-  Eric Bréchemier <scopeornot@eric.brechemier.name>
+  Eric Bréchemier  
+  <scopeornot@eric.brechemier.name>
 
 ## LICENSE ##
 
