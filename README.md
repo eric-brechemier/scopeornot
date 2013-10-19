@@ -464,7 +464,7 @@
   if you list a module that is not loaded yet in the list of needs of your
   module, it will get loaded asynchronously using require.js before your
   module gets initialized. See how module identifiers are mapped to paths
-  and how to customize these paths in the RequireJS API documentation [23].
+  and how to customize these paths in the [RequireJS API documentation][].
 
   To make your code easier to test and to run in different JavaScript
   environment, it is useful to copy properties available in the global
@@ -558,6 +558,8 @@
 
 [RequireJS]: http://requirejs.org/
 
+[RequireJS API documentation]: http://www.requirejs.org/docs/api.html
+
   * [harmony:modules - ECMAScript Wiki][harmony:modules]  
 
 [harmony:modules]: http://wiki.ecmascript.org/doku.php?id=harmony:modules
@@ -605,9 +607,6 @@
   * [Asynchronous Module Definition][AMD]
 
 [AMD]: https://github.com/amdjs/amdjs-api/wiki/AMD
-
-  [23] RequireJS API documentation
-  http://www.requirejs.org/docs/api.html
 
   * [UMD (Universal Module Definition) patterns][UMD]
 
