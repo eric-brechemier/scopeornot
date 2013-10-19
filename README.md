@@ -417,6 +417,7 @@
   You can then use scope() in the scripts loaded subsequently.
 
   In the browser:
+
     <script src="scopeornot/scope-level1-global.js"></script>
     <script src="myscript.js"></script>
 
@@ -437,6 +438,7 @@
   an extra layer of scope, getting to level 2:
 
   In the browser:
+
     <script src="scopeornot/scope-level1-global.js"></script>
     <script src="scopeornot/scope-level2-shared.js"></script>
     <script src="myscript.js"></script>
@@ -450,6 +452,7 @@
   require.js to add support for Asynchronous Module Definition (AMD).
 
   In the browser:
+
     <script src="scopeornot/scope-level1-global.js"></script>
     <script src="scopeornot/scope-level2-shared.js"></script>
     <script src="requirejs/require.js"></script>
