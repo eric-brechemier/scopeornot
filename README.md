@@ -28,6 +28,11 @@
 [scope-in-browser]: https://github.com/eric-brechemier/scope-in-browser
 [scope-in-node]: https://github.com/eric-brechemier/scope-in-node
 
+## PRIOR ART ##
+
+  scopeornot was inspired by the scope() function in [my-common] project,
+  presented by Jie Meng-Gérard at [ParisJS][] in March 2011.
+
 ## BACKGROUND STORY ##
 
   In November 2008, while working on the development of [mangaconseil.com][],
@@ -622,11 +627,6 @@
      where properties and events can be shared"
 
 [within()]: https://github.com/eric-brechemier/within
-
-## PRIOR ART ##
-
-  scopeornot was inspired by the scope() function in [my-common] project,
-  presented by Jie Meng-Gérard at [ParisJS][] in March 2011.
 
 ## HISTORY ##
 
