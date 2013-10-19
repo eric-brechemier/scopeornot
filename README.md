@@ -1,5 +1,9 @@
 # scopeornot #
 
+    scope(code,needs,name){
+      /* your code goes here */
+    }
+
 ## LANGUAGE ##
 
   JavaScript
