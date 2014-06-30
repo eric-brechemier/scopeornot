@@ -1,9 +1,5 @@
-# ignore temp vim files
-*.swp
-
 # ignore thumbnails
 Thumbs.db
 
 # ignore temporary OpenOffice.org files
 .~lock.*
-
