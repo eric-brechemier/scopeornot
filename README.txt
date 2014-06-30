@@ -28,8 +28,8 @@ LICENSE
   http://technology.chtsai.org/impress/
   CC-BY-SA Chih-Hao Tsai
 
-  Creative Commons Attribution-ShareAlike 3.0 Unported License
-  http://creativecommons.org/licenses/by-sa/3.0/
+  Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+  https://creativecommons.org/licenses/by-sa/4.0/
 
 COPYRIGHT
 
