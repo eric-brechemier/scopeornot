@@ -639,6 +639,6 @@
 * 2012-07-30, v0.4.1, Deprecate inherited properties introduced in v0.0.9
 * 2012-08-08, v0.4.2, Bug fix: add scope in shared private context
 * 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
-* 2014-XX-XX, v0.5.1, Bug fix in scope-log: add missing declarations
+* 2014-06-30, v0.5.1, Bug fix in scope-log: add missing declarations
 * 2014-XX-XX, v0.5.2, Bug fix in scope-amd: handle missing hasOwnProperty()
 

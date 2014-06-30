@@ -15,7 +15,8 @@ scope(function(parentContext){
     parentScope = parentContext.scope,
     Date = parentContext.Date,
     Number = parentContext.Number,
-    console = parentContext.console;
+    console = parentContext.console,
+    log;
 
   /*
     Function: getTimeStamp(): number
@@ -26,6 +27,28 @@ scope(function(parentContext){
   */
   function getTimeStamp(){
     return Number(new Date());
+  }
+
+  // nada/no.js (CC0)
+  function no( value ) {
+    var undef; // do not trust global undefined, which can be set to a value
+    return value === null || value === undef;
+  }
+
+  // nada/nix.js (CC0)
+  function nix() {}
+
+  // nada/bind.js (CC0)
+  function bind( func, object ) {
+    return function() {
+      return func.apply( object, arguments );
+    };
+  }
+
+  if ( no(console) || typeof console.log !== "function" ) {
+    log = nix;
+  } else {
+    log = bind( console.log, console );
   }
 
   /*
