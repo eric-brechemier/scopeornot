@@ -18,16 +18,6 @@
   MIT  
   http://www.opensource.org/licenses/MIT
 
-## RELATED PROJECTS ##
-
-  * [scope-presentation][] - introduction to scopeornot
-  * [scope-in-browser][] - examples of use in the browser
-  * [scope-in-node][] - examples of use in Node.js
-
-[scope-presentation]: https://github.com/eric-brechemier/scopeornot-presentation
-[scope-in-browser]: https://github.com/eric-brechemier/scope-in-browser
-[scope-in-node]: https://github.com/eric-brechemier/scope-in-node
-
 ## PRIOR ART ##
 
   scopeornot was inspired by the scope() function in [my-common] project,
@@ -648,7 +638,7 @@
 * 2012-07-27, v0.4.0, Getting started with building blocks organized in levels
 * 2012-07-30, v0.4.1, Deprecate inherited properties introduced in v0.0.9
 * 2012-08-08, v0.4.2, Bug fix: add scope in shared private context
-* 2013-XX-XX, v0.5.0, Move unit tests from scope-in-browser to this project
-* 2013-XX-XX, v0.5.1, Bug fix in scope-log: add missing declarations
-* 2013-XX-XX, v0.5.2, Bug fix in scope-amd: handle missing hasOwnProperty()
+* 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
+* 2014-XX-XX, v0.5.1, Bug fix in scope-log: add missing declarations
+* 2014-XX-XX, v0.5.2, Bug fix in scope-amd: handle missing hasOwnProperty()
 
