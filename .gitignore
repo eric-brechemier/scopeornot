@@ -1,0 +1,5 @@
+# ignore thumbnails
+Thumbs.db
+
+# ignore temporary OpenOffice.org files
+.~lock.*
