@@ -11,19 +11,19 @@
   </p>
   <p>
   By adding <a href="view-source:example5.html"
-  >scope-ready on top of scope-private and scope-bootstrap</a>,
+  >scope-level3-ready on top of scope-level2-shared and scope-level1-global</a>,
   the same modules may now be defined out of order.
   </p>
   <p>
-  Usinc scope-log, the order of calls to scope() and calls to the code
+  Usinc scope-level8-log, the order of calls to scope() and calls to the code
   is logged to the console, if available.
   </p>
 
   <!-- the scope() implementations must be defined in order -->
-  <script src="scopeornot/scope-bootstrap.js"></script>
-  <script src="scopeornot/scope-private.js"></script>
-  <script src="scopeornot/scope-ready.js"></script>
-  <script src="scopeornot/scope-log.js"></script>
+  <script src="../../scope-level1-global.js"></script>
+  <script src="../../scope-level2-shared.js"></script>
+  <script src="../../scope-level3-ready.js"></script>
+  <script src="../../scope-level8-log.js"></script>
 
   <!-- the modules may be defined in any order -->
   <script>
@@ -38,7 +38,8 @@
     );
   },["log","timeModule"]);
   </script>
-  <script src="scripts/timeModule.js"></script>
-  <script src="scripts/log.js"></script>
-  <script src="scripts/timestamp.js"></script>
+  <script src="../timeModule.js"></script>
+  <script src="../log.js"></script>
+  <script src="../timestamp.js"></script>
+  <script src="document.js"></script>
 </html>

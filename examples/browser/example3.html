@@ -13,16 +13,16 @@
   <p>
   This example defines two more modules, "timestamp" and "timeModule".
   As seen in the <a href="view-source:example3.html">page source</a>,
-  using scope-bootstrap alone, the modules can be accessed directly
+  using scope-level1-global alone, the modules can be accessed directly
   in the global context as well as indirectly using scope().
   </p>
   <p>
   Go on with <a href="example4.html">Example 4</a>.
   </p>
-  <script src="scopeornot/scope-bootstrap.js"></script>
-  <script src="scripts/log.js"></script>
-  <script src="scripts/timestamp.js"></script>
-  <script src="scripts/timeModule.js"></script>
+  <script src="../../scope-level1-global.js"></script>
+  <script src="../log.js"></script>
+  <script src="../timestamp.js"></script>
+  <script src="../timeModule.js"></script>
   <script>
   timeModule.start();
   scope(function(context){

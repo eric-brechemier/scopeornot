@@ -9,16 +9,17 @@
     </div>
     <p>
     This example is similar to <a href="example1.html">Example 1</a>.
-    This time, the module lists its needs explicitly.
+    This time, <a href="../run-code-with-needs.js"
+    >the module lists its needs explicitly</a>.
     It works in the same way, because
-    <a href="view-source:example2.html">only scope-bootstrap is used</a>,
-    and scope-bootstrap ignores needs.
+    <a href="view-source:example2.html">scope-level1-global is used alone</a>,
+    and scope-level1-global ignores the needs declared by modules.
     </p>
     <p>
     Go on with <a href="example3.html">Example 3</a>.
     </p>
-    <script src="scopeornot/scope-bootstrap.js"></script>
-    <script src="scripts/log.js"></script>
-    <script src="scripts/run-code-with-needs.js"></script>
+    <script src="../../scope-level1-global.js"></script>
+    <script src="../log.js"></script>
+    <script src="../run-code-with-needs.js"></script>
   </body>
 </html>

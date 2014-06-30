@@ -11,17 +11,24 @@
   </p>
   <p>
   By adding <a href="view-source:example4.html"
-  >scope-private on top of scope-bootstrap</a>, the same modules are now
-  defined in a shared private scope.
+  >scope-level2-shared on top of scope-level1-global</a>,
+  the same modules are now defined in a shared private scope.
+  </p>
+  <p>
+  Because the log module needs the global 'document' object, which is not
+  present initially in the shared context, an <a href="document.js"
+  >extra module</a> must be loaded before to copy the global 'document'
+  and make it available in shared context.
   </p>
   <p>
   Go on with <a href="example5.html">Example 5</a>.
   </p>
-  <script src="scopeornot/scope-bootstrap.js"></script>
-  <script src="scopeornot/scope-private.js"></script>
-  <script src="scripts/log.js"></script>
-  <script src="scripts/timestamp.js"></script>
-  <script src="scripts/timeModule.js"></script>
+  <script src="../../scope-level1-global.js"></script>
+  <script src="../../scope-level2-shared.js"></script>
+  <script src="document.js"></script>
+  <script src="../log.js"></script>
+  <script src="../timestamp.js"></script>
+  <script src="../timeModule.js"></script>
   <script>
   scope(function(context){
     context.timeModule.start();
