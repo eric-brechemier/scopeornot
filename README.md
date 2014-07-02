@@ -513,6 +513,7 @@
 * scope-level3-amd.js - [Asynchronous Module Definition][AMD]
 * scope-level3-amd-anonymous.js - (ROADMAP) variant of AMD ignoring module name
 * scope-level3-headjs.js - (ROADMAP) asynchronous loading using [HeadJS][]
+* scope-level3-labjs.js - (ROADMAP) asynchronous loading using [LABjs][]
 * scope-level4-dynamic.js - (ROADMAP) asynchronous loading based on scope-ready
 * scope-level8-log.js - log when scope() is called and when code actually runs
 
@@ -613,6 +614,8 @@
 
 [HeadJS]: https://github.com/headjs/headjs
 
+[LABjs]: https://github.com/getify/LABjs
+
   * [within project on GitHub][within()]  
     "within is a factory of semi-private spaces  
      where properties and events can be shared"
@@ -640,5 +643,14 @@
 * 2012-08-08, v0.4.2, Bug fix: add scope in shared private context
 * 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
 * 2014-06-30, v0.5.1, Bug fix in scope-log: add missing declarations
-* 2014-XX-XX, v0.5.2, Bug fix in scope-amd: handle missing hasOwnProperty()
+* 2014-XX-XX, v0.5.2, Delete deprecated script scope-level3-shared-imports
+* 2014-XX-XX, v0.5.3, Add scope-level2-unique
+* 2014-XX-XX, v0.5.4, Bug fix in scope-amd: handle missing hasOwnProperty()
+* 2014-XX-XX, v0.5.5, Add scope-level3-amd-anonymous
+* 2014-XX-XX, v0.6.0, Add examples and unit tests for Node.js
+* 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
+* 2014-XX-XX, v0.7.0, Add scope-level3-headjs
+* 2014-XX-XX, v0.7.0, Add scope-level3-labjs
+* 2014-XX-XX, v0.8.0, Add scope-level4-dynamic
+* 2014-XX-XX, v0.9.0, Add scope-level2-within
 
