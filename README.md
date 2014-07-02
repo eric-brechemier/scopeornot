@@ -279,15 +279,9 @@
   First, scope() can be used as a replacement for the Immediately-Invoked
   Function Expression used in the JavaScript module pattern:
 
-    var assert = scope(function(){
-      (...)
-
-      return {
-        isTrue: isTrue,
-        isFalse: isFalse,
-        equals: equals,
-        arrayEquals: arrayEquals,
-        fail: fail
+    var log = scope(function(){
+      return function(message){
+        console.log(message);
       };
     });
 
@@ -295,26 +289,20 @@
   in the list of needs. These properties, if available, will be set in the
   context object provided as argument:
 
-    scope(function(context){
-      var
-        timestamp = context.timestamp,
-        assert = context.assert;
+    var log = scope(function(context){
+      var console = context.console;
 
-      assert.equals(typeof timestamp, "function",
-                                  "timestamp() is expected to be a function");
+      function log(message) {
+        console.log(message);
+      }
 
-      assert.fail("Missing tests");
+      return log;
 
     },["assert","timestamp"]);
 
   Finally, you may give a name to each module; the value returned by the
   function will be set to a property with given name in the context, and
   this name may be used in the list of needs of other modules:
-
-    // Declare an alias "assert" for "bezen.org/assert"
-    scope(function(context){
-      return context["bezen.org/assert"];
-    },["bezen.org/assert"],"assert");
 
     // Copy global Number to context
     scope(function(){
@@ -342,31 +330,26 @@
       return timestamp;
     },["Number","Date"],"timestamp");
 
-    // Declare unit tests for the timestamp module in "testTimestamp"
+    // Copy global console to context
+    scope(function(){
+      return console;
+    },[],"console");
+
+    // Define "log" module (now using "timestamp" module)
     scope(function(context){
       var
         timestamp = context.timestamp,
-        assert = context.assert;
+        console = context.console;
 
-      function testTimestamp(){
-        assert.equals(typeof timestamp, "function",
-                                  "timestamp() is expected to be a function");
-        var before = Number(new Date());
-        var value = timestamp();
-        var after = Number(New Date());
-        assert.equals(typeof value, "Number",
-                                "timestamp() is expected to return a number");
-        assert.isTrue( before <= value && value <= after,
-              "timestamp() is expected to return current time in milliseconds");
+      function log( message ) {
+        console.log( timestamp(), ": ", message );
       }
 
-      return testTimestamp;
-    },["assert","timestamp"],"testTimestamp");
+      return log;
+    },["console","timestamp"],"log");
 
-    // Run unit tests for timestamp module
-    scope(function(context){
-      context.testTimestamp();
-    },["testTimestamp"]);
+  At this step, there is no need to define a global variable "log" anymore;
+  all your modules can now be accessed in the shared context instead.
 
 ## APPLICATION PROGRAMMING INTERFACE (API) ##
 
