@@ -650,7 +650,7 @@
 * 2014-XX-XX, v0.6.0, Add examples and unit tests for Node.js
 * 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
 * 2014-XX-XX, v0.7.0, Add scope-level3-headjs
-* 2014-XX-XX, v0.7.0, Add scope-level3-labjs
+* 2014-XX-XX, v0.7.1, Add scope-level3-labjs
 * 2014-XX-XX, v0.8.0, Add scope-level4-dynamic
 * 2014-XX-XX, v0.9.0, Add scope-level2-within
 
