@@ -4,7 +4,7 @@ scope(function(context){
     console = context.console;
 
   function log( message ) {
-    console.log( timestamp(), ": ", message );
+    console.log( timestamp() + ": " + message );
   }
 
   return log;
