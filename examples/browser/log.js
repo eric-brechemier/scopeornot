@@ -3,15 +3,16 @@ scope(function(context){
     // constant
     LOG_ELEMENT_ID = "log",
 
-    // declare alias
-    document = context.document;
+    // declare aliases
+    document = context.document,
+    timestamp = context.timestamp;
 
   function log(text){
     document
       .getElementById(LOG_ELEMENT_ID)
-      .innerHTML += text + "<br/>";
+      .innerHTML += timestamp() + '|' + text + "<br/>";
   }
 
   return log;
 
-},["document"],"log");
+},["document","timestamp"],"log");
