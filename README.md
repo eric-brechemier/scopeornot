@@ -298,7 +298,7 @@
 
       return log;
 
-    },["assert","timestamp"]);
+    },["console"]);
 
   Finally, you may give a name to each module; the value returned by the
   function will be set to a property with given name in the context, and
