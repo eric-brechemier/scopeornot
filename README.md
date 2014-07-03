@@ -636,4 +636,5 @@
 * 2014-XX-XX, v0.6.7, Add scope-level3-labjs
 * 2014-XX-XX, v0.6.8, Add scope-level4-dynamic
 * 2014-XX-XX, v0.6.9, Add scope-level2-within
+* 2014-XX-XX, v0.7.0, Add support for JavaScript shell scripting: Rhino, etc.
 
