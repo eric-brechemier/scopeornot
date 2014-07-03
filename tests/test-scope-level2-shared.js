@@ -1,75 +1,66 @@
-(function(){
+scope(function(context){
 
   var
+    log = context.log,
+    test = context.test,
+    assert = context.assert,
     // global object
-    global = this;
+    global = context.global;
 
-  test("scope(code) must run code in private context",function(){
+  log(test(function(){
     var
-      hasRun = false;
-    scope(function(context){
-      hasRun = true;
-      notStrictEqual(context,global,"code must not run in global context");
-    });
-    ok(hasRun,"code must run synchronously");
-  });
-
-  test("scope(code,needs,name) must set result in private context",function(){
-    var
-      hasRun = false,
+      hasRun,
       privateContext,
+      originalScope,
       codeName1 = "module1",
       codeResult1 = {result:"value1"},
-      originalScope,
       scopeReplacement = function(){/* replacement for scope() */};
 
+    hasRun = false;
     scope(function(context){
       hasRun = true;
-      notStrictEqual(context, global, "code must not run in global context");
+      assert( context !== global,       "code must not run in global context");
+    });
+    assert( hasRun,                             "code must run synchronously");
+
+    hasRun = false;
+    scope(function(context){
+      hasRun = true;
+      assert( context !== global,       "code must not run in global context");
       privateContext = context;
       return codeResult1;
     },["a","ab","abc"],codeName1);
-    ok(hasRun,"code must run synchronously, ignoring needs");
-    strictEqual(
-      typeof privateContext,
-      "object",
-      "private context must be an object"
-    );
-    strictEqual(
-      privateContext[codeName1],
-      codeResult1,
-      "result value must be set in private context"
-    );
+    assert( hasRun,             "code must run synchronously, ignoring needs");
+    assert( typeof privateContext === "object",
+                                          "private context must be an object");
+    assert( privateContext[codeName1] === codeResult1,
+                                "result value must be set in private context");
 
     scope(function(context){
-      strictEqual(context,privateContext,"private context must be shared");
+      assert( context === privateContext,
+                  "private context must be shared (no dependencies, no name)");
     });
 
     scope(function(context){
-      strictEqual(context,privateContext,"private context must be shared");
+      assert( context === privateContext,
+                                   "private context must be shared (no name)");
     },[]);
 
     scope(function(context){
-      strictEqual(context,privateContext,"private context must be shared");
+      assert( context === privateContext,    "private context must be shared");
     },[],"module2");
 
     originalScope = global.scope;
     scope(function(context){
       return scopeReplacement;
     },[],"scope");
-    strictEqual(
-      privateContext.scope,
-      scopeReplacement,
-      "scope() is expected to be replaced in private context"
-    );
-    strictEqual(
-      global.scope,
-      scopeReplacement,
-      "scope() is expected to be replaced in global context"
-    );
+    assert( privateContext.scope === scopeReplacement,
+                      "scope() is expected to be replaced in private context");
+    assert( global.scope === scopeReplacement,
+                       "scope() is expected to be replaced in global context");
     // restore origin scope() to allow further tests
     privateContext.scope = originalScope;
     global.scope = originalScope;
-  });
+  }));
 
-}());
+},["assert","log","test","global"],"test-scope-level2-shared");
