@@ -1,20 +1,16 @@
 <!doctype html>
 <html>
   <head>
-    <title>Test 1 &mdash; scope-bootstrap.js</title>
-    <link rel="stylesheet"
-      href="http://code.jquery.com/qunit/qunit-1.14.0.css"
-    />
+    <title>Test &mdash; scope-level1-global.js</title>
   </head>
   <body>
-    <h1 id="qunit-header">Test &mdash; scope-level1-global.js</h1>
-    <h2 id="qunit-banner"></h2>
-    <div id="qunit-testrunner-toolbar"></div>
-    <h2 id="qunit-userAgent"></h2>
-    <ol id="qunit-tests"></ol>
-    <div id="qunit-fixture"></div>
-    <script src="http://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+    <h1>Test &mdash; scope-level1-global.js</h1>
+    <div id="log"></div>
     <script src="../../scope-level1-global.js"></script>
+    <script src="../../node_modules/assert.js"></script>
+    <script src="../../node_modules/test.js"></script>
+    <script src="log.js"></script>
+    <script src="../../node_modules/global.js"></script>
     <script src="../test-scope-level1-global.js"></script>
   </body>
 </html>
