@@ -63,6 +63,11 @@ scope(function(parentContext){
     Returns:
       any, the return value of this code if it has run synchronously,
       or null if the code has not run yet
+
+    Note:
+    In Node.js, the exports belong to the module which contains this scope()
+    function, e.g. 'scope-level3-commonjs', not the module which called the
+    scope() function, e.g. following a call to require( 'module-name' ).
   */
   function scope(code,needs,name){
     return parentScope(function(context){

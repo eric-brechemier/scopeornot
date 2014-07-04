@@ -2,8 +2,7 @@ console.log( "Example 5: Load missing dependencies dynamically" );
 
 console.log(
   "Adding scope-level3-commonjs in a CommonJS environment,\n" +
-  "missing dependencies are loaded dynamically with require()\n" +
-  "and are exported for direct access with require()."
+  "missing dependencies are loaded dynamically with require()."
 );
 
 require( '../../scope-level1-global.js' );
