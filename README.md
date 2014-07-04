@@ -626,14 +626,16 @@
 * 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
 * 2014-06-30, v0.5.1, Bug fix in scope-log: add missing declarations
 * 2014-07-04, v0.5.2, Delete deprecated scope-level3-shared-imports
+* 2014-XX-XX, v0.5.3, Reduce dependencies to "log" in scope-level8-log
 * 2014-XX-XX, v0.6.0, Add examples and unit tests for Node.js
 * 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
+* 2014-XX-XX, v0.6.2, Add examples and unit tests for RingoJS
 * 2014-XX-XX, v0.6.3, Add scope-level2-unique
-* 2014-XX-XX, v0.6.4, Bug fix in scope-amd: handle missing hasOwnProperty()
-* 2014-XX-XX, v0.6.5, Add scope-level3-amd-anonymous
-* 2014-XX-XX, v0.6.6, Add scope-level3-headjs
-* 2014-XX-XX, v0.6.7, Add scope-level3-labjs
-* 2014-XX-XX, v0.6.8, Add scope-level4-dynamic
-* 2014-XX-XX, v0.6.9, Add scope-level2-within
 * 2014-XX-XX, v0.7.0, Add support for JavaScript shell scripting: Rhino, etc.
+* 2014-XX-XX, v0.7.1, Bug fix in scope-amd: handle missing hasOwnProperty()
+* 2014-XX-XX, v0.7.2, Add scope-level3-amd-anonymous
+* 2014-XX-XX, v0.7.3, Add scope-level3-headjs
+* 2014-XX-XX, v0.7.4, Add scope-level3-labjs
+* 2014-XX-XX, v0.7.5, Add scope-level4-dynamic
+* 2014-XX-XX, v0.8.0, Add scope-level2-within
 
