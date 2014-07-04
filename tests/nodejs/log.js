@@ -1,8 +1,8 @@
 scope(function(context){
   var console = context.console;
 
-  function log( message ) {
-    console.log( message );
+  function log() {
+    console.log.apply( console, arguments );
   }
 
   return log;
