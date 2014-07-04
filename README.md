@@ -487,7 +487,6 @@
 * scope-level1-global.js - scope bootstrap in global context
 * scope-level1-global-ringojs.js - alternative bootstrap for RingoJS
 * scope-level2-shared.js - private context shared by all modules
-* scope-level2-shared-imports.js - deprecated
 * scope-level2-unique.js - (ROADMAP) private context created for each module
 * scope-level2-within.js - (ROADMAP) context and events shared in [within()][]
 * scope-level3-ready.js - only run code once all dependencies are available
@@ -626,9 +625,9 @@
 * 2012-08-08, v0.4.2, Bug fix: add scope in shared private context
 * 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
 * 2014-06-30, v0.5.1, Bug fix in scope-log: add missing declarations
+* 2014-07-04, v0.5.2, Delete deprecated scope-level3-shared-imports
 * 2014-XX-XX, v0.6.0, Add examples and unit tests for Node.js
 * 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
-* 2014-XX-XX, v0.6.2, Delete deprecated script scope-level3-shared-imports
 * 2014-XX-XX, v0.6.3, Add scope-level2-unique
 * 2014-XX-XX, v0.6.4, Bug fix in scope-amd: handle missing hasOwnProperty()
 * 2014-XX-XX, v0.6.5, Add scope-level3-amd-anonymous
