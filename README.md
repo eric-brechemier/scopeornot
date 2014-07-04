@@ -626,7 +626,7 @@
 * 2014-06-30, v0.5.0, Merge scope-in-browser and scopeornot-presentation
 * 2014-06-30, v0.5.1, Bug fix in scope-log: add missing declarations
 * 2014-07-04, v0.5.2, Delete deprecated scope-level3-shared-imports
-* 2014-XX-XX, v0.5.3, Reduce dependencies to "log" in scope-level8-log
+* 2014-07-04, v0.5.3, Reduce dependencies to "log" in scope-level8-log
 * 2014-XX-XX, v0.6.0, Add examples and unit tests for Node.js
 * 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
 * 2014-XX-XX, v0.6.2, Add examples and unit tests for RingoJS

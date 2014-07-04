@@ -44,4 +44,4 @@ scope(function(parentContext){
 
   privateContext.scope = scope;
   return scope;
-},[],"scope");
+},["scope"],"scope");

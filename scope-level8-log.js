@@ -4,8 +4,9 @@
 // https://github.com/eric-brechemier/scopeornot
 
 // This is a filter which may loaded at any level above level 1, and depends
-// on the following modules "console", "Date", "Number" in the context,
-// not included.
+// on the module "log" in the context, not included. Examples of "log" module
+// implementations for different platforms can be found in the subdirectories
+// of examples/ and tests/ in scopeornot repository.
 
 /*global scope*/
 scope(function(parentContext){
@@ -13,43 +14,7 @@ scope(function(parentContext){
   var
     // declare aliases
     parentScope = parentContext.scope,
-    Date = parentContext.Date,
-    Number = parentContext.Number,
-    console = parentContext.console,
-    log;
-
-  /*
-    Function: getTimeStamp(): number
-    Get a time stamp
-
-    Returns:
-      number, the number of milliseconds since 1970-01-01T00:00Z.
-  */
-  function getTimeStamp(){
-    return Number(new Date());
-  }
-
-  // nada/no.js (CC0)
-  function no( value ) {
-    var undef; // do not trust global undefined, which can be set to a value
-    return value === null || value === undef;
-  }
-
-  // nada/nix.js (CC0)
-  function nix() {}
-
-  // nada/bind.js (CC0)
-  function bind( func, object ) {
-    return function() {
-      return func.apply( object, arguments );
-    };
-  }
-
-  if ( no(console) || typeof console.log !== "function" ) {
-    log = nix;
-  } else {
-    log = bind( console.log, console );
-  }
+    log = parentContext.log;
 
   /*
     Function: scope(code[,needs[,name]]): any
@@ -66,20 +31,29 @@ scope(function(parentContext){
       any, the return value of this code if it has run synchronously,
       or null if the code has not run yet
 
-    Note:
-    Nothing happens in case console.log() is not available. The "console" is
-    requested in the context at the time when scope() is called to define this
-    implementation. A custom "console" may be defined beforehand, for example
-    to forward the logs to a remote server.
+    Notes:
+    1. The log() function used for logging must be defined beforehand, and can
+    be customized to log locally to the console and or to a remote server.
+    2. The log calls are made with separate arguments, without converting
+    arguments to a string to preserve the original arguments provided, and
+    without concatenating to avoid unnecessary parsing when analyzing the logs
+    with code. The logged arguments are in the following order:
+      * 'scope(' | 'code('
+      * code
+      * ','
+      * needs
+      * ','
+      * name
+      * ')'
   */
   function scope(code,needs,name){
-    log.call(console,getTimeStamp(),":","scope(",code,",",needs,",",name,")");
+    log("scope(",code,",",needs,",",name,")");
     return parentScope(function(context){
-      log.call(console,getTimeStamp(),":","code(",code,",",needs,",",name,")");
+      log("code(",code,",",needs,",",name,")");
       return code(context);
     },needs,name);
   }
 
   return scope;
 
-},["scope","console","Date","Number"],"scope");
+},["scope","log"],"scope");
