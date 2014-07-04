@@ -5,7 +5,6 @@ scope(function(context){
 
   function addLogRecord(){
     logRecords.push(arguments);
-    return log.apply(this, arguments);
   }
 
   function getLogRecords(){
@@ -13,6 +12,9 @@ scope(function(context){
   }
 
   context.log = addLogRecord;
-  return getLogRecords;
+  return {
+    getLogRecords: getLogRecords,
+    print: log
+  };
 
 },["log"],"stub-log");
