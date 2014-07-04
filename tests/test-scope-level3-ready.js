@@ -14,11 +14,14 @@ test("scope-ready must run code only when all needs are available",function(){
   });
   ok(hasRun,"scope(code) must run code");
 
+  sharedContext.setTimeout = setTimeout;
+  sharedContext.Date = Date;
+
   hasRun = false;
   scope(function(context){
     hasRun = true;
     strictEqual(context,sharedContext,"context must be shared");
-  },["scope","setTimeout","Date","document"]);
+  },["scope","setTimeout","Date"]);
   ok(hasRun,"scope(code,needs) must run code when all needs are available");
 
   hasRun = false;
