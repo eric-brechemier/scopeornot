@@ -6,7 +6,7 @@
 // This script must be loaded in level 3 and depends on the availability
 // of the CommonJS require() function in the JavaScript environment.
 
-/*global scope, require, exports */
+/*global scope, require */
 scope(function(parentContext){
 
   var
