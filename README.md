@@ -628,7 +628,8 @@
 * 2014-07-04, v0.5.2, Delete deprecated scope-level3-shared-imports
 * 2014-07-04, v0.5.3, Reduce dependencies to "log" in scope-level8-log
 * 2014-07-04, v0.6.0, Add examples and unit tests for Node.js
-* 2014-XX-XX, v0.6.1, Add scope-level3-nodejs
+* 2014-07-05, v0.6.1, Export modules for require() in scope-level3-commonjs
+* 2014-XX-XX, v0.6.2, Add scope-level3-nodejs
 * 2014-XX-XX, v0.6.2, Add examples and unit tests for RingoJS
 * 2014-XX-XX, v0.6.3, Add scope-level2-unique
 * 2014-XX-XX, v0.7.0, Add support for JavaScript shell scripting: Rhino, etc.

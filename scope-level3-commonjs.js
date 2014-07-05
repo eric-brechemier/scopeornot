@@ -39,8 +39,11 @@ scope(function(parentContext){
         // scope() can be called within required module
         // and set the needName property in context.
         // The value defined by scope() call must be preserved.
-        if ( !context.hasOwnProperty(need) ){
-          // if no value was defined, assign the exported object instead
+        if ( context.hasOwnProperty(need) ){
+          // when the context was set in scope(), copy it in exported module
+          needExports[need] = context[need];
+        } else {
+          // otherwise copy the module exports to the context
           context[need] = needExports;
         }
       }
@@ -63,20 +66,11 @@ scope(function(parentContext){
     Returns:
       any, the return value of this code if it has run synchronously,
       or null if the code has not run yet
-
-    Note:
-    In Node.js, the exports belong to the module which contains this scope()
-    function, e.g. 'scope-level3-commonjs', not the module which called the
-    scope() function, e.g. following a call to require( 'module-name' ).
   */
   function scope(code,needs,name){
     return parentScope(function(context){
       requireMissingNeeds(needs,context);
-      var result = code(context);
-      if (typeof name === "string"){
-        exports[name] = result;
-      }
-      return result;
+      return code(context);
     },needs,name);
   }
 

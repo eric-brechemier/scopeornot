@@ -2,11 +2,7 @@ scope(function(sharedContext){
   var
     log = sharedContext.log,
     test = sharedContext.test,
-    assert = sharedContext.assert,
-
-    // relative path to the module which defines scope() for CommonJS
-    // (this is were new modules are exported in Node.js)
-    SCOPE_COMMONJS_MODULE = "../scope-level3-commonjs.js";
+    assert = sharedContext.assert;
 
   log(test(function(){
     var
@@ -27,6 +23,8 @@ scope(function(sharedContext){
       assert( context === sharedContext,     "context must be shared (needs)");
       assert( typeof context.timestamp === "function",
                                "direct dependency 'timestamp' must be loaded");
+      assert( context.timestamp === require("timestamp").timestamp,
+           "same module 'timestamp' expected by direct access with require()");
       assert(
         typeof context.Number === "function" &&
         typeof context.Date === "function",
@@ -50,9 +48,6 @@ scope(function(sharedContext){
     assert( hasRun,                         "scope(code,needs,name) must run");
     assert( webserver.https = require("https"),
                  "same module expected in context as in require() call after");
-    assert( webserver === require(SCOPE_COMMONJS_MODULE).webserver,
-            "exported module expected to be available with require() as well");
-
   }));
 
 },["log","test","assert"],"test-scope-level3-commonjs");
