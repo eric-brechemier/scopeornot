@@ -23,9 +23,9 @@ scope(function(sharedContext){
       assert( context === sharedContext,     "context must be shared (needs)");
       assert( typeof context.timestamp === "function",
                                "direct dependency 'timestamp' must be loaded");
-      assert( context.timestamp === require("timestamp").timestamp,
+      assert( context.timestamp === require("timestamp"),
          "same module 'timestamp' expected by direct access with require(), " +
-                                                          "in CommonJS style");
+                                                           "in Node.js style");
       assert(
         typeof context.Number === "function" &&
         typeof context.Date === "function",

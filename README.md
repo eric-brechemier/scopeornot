@@ -629,9 +629,9 @@
 * 2014-07-04, v0.5.3, Reduce dependencies to "log" in scope-level8-log
 * 2014-07-04, v0.6.0, Add examples and unit tests for Node.js
 * 2014-07-05, v0.6.1, Export modules for require() in scope-level3-commonjs
-* 2014-XX-XX, v0.6.2, Add scope-level3-nodejs
-* 2014-XX-XX, v0.6.2, Add examples and unit tests for RingoJS
-* 2014-XX-XX, v0.6.3, Add scope-level2-unique
+* 2014-07-05, v0.6.2, Add scope-level3-nodejs, variant of CommonJS for Node.js
+* 2014-XX-XX, v0.6.3, Add examples and unit tests for RingoJS
+* 2014-XX-XX, v0.6.4, Add scope-level2-unique
 * 2014-XX-XX, v0.7.0, Add support for JavaScript shell scripting: Rhino, etc.
 * 2014-XX-XX, v0.7.1, Bug fix in scope-amd: handle missing hasOwnProperty()
 * 2014-XX-XX, v0.7.2, Add scope-level3-amd-anonymous

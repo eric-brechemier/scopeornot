@@ -1,4 +1,4 @@
-console.log( "Example 5: Load missing dependencies dynamically (CommonJS)" );
+console.log( "Example 6: Load missing dependencies dynamically (Node.js)" );
 
 console.log(
   "Adding scope-level3-commonjs in a CommonJS environment,\n" +
@@ -8,7 +8,7 @@ console.log(
 
 require( '../../scope-level1-global.js' );
 require( '../../scope-level2-shared.js' );
-require( '../../scope-level3-commonjs.js' );
+require( '../../scope-level3-nodejs.js' );
 
 scope(function(context){
   context.timeModule.start();
@@ -21,6 +21,5 @@ scope(function(context){
   );
 },["log","timeModule"]);
 
-require('log').log(
-  "Direct access to log() through require(), in CommonJS style"
-);
+var log = require('log');
+log( "Direct access to log() through require(), in Node.js style" );
